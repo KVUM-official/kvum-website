@@ -3,9 +3,7 @@
 import { useLocale } from 'next-intl';
 
 type Member = {
-  avatar: string;
-  c1: string;
-  c2: string;
+  img: string;
   role: string;
   name: string;
   alias?: string;
@@ -33,8 +31,8 @@ const CONTENT: Record<string, Content> = {
     heroSub: '국내 XR 사용자들이 중심이 되어 소통과 정보 교류를 활발히 할 수 있는 플랫폼을 만드는 팀. 다양한 배경의 전문가들이 각자의 경험을 바탕으로 KVUM을 이끌고 있습니다.',
     members: [
       {
-        avatar: '쭘', c1: '#FF2D7D', c2: '#00E0FF',
-        role: 'Host · 대표',
+        img: '/images/common/team/team-kimjunghyun.png',
+        role: 'Lead',
         name: '김정현', alias: '쭘쭘',
         bio: <>KVUM 호스트이자 VR Insight 블로그 운영자.<br />국내 XR 시장과 사용자를 잇는 플랫폼을 만들고 있습니다. 행사 기획 · 파트너십 · 전반 운영 총괄.</>,
         links: [
@@ -44,16 +42,16 @@ const CONTENT: Record<string, Content> = {
         lead: true,
       },
       {
-        avatar: '권', c1: '#7B2FF7', c2: '#00E0FF',
-        role: 'Organizer',
-        name: '권뺌',
-        bio: 'KVUM 운영팀. 행사 기획과 현장 진행을 함께 맡고 있습니다.',
+        img: '/images/common/team/team-noyunkyung.png',
+        role: 'Designer',
+        name: '노윤경', alias: '순탄',
+        bio: 'KVUM 브랜드 디자인과 시각적 아이덴티티를 담당합니다. 행사 비주얼과 콘텐츠 제작을 맡고 있습니다.',
       },
       {
-        avatar: '순', c1: '#FF2D7D', c2: '#FFB84D',
-        role: 'Organizer',
-        name: '순탄',
-        bio: 'KVUM 운영팀. 행사 기획과 현장 진행을 함께 맡고 있습니다.',
+        img: '/images/common/team/team-kwonkihyun.png',
+        role: 'Sales',
+        name: '권기현', alias: '권뺌',
+        bio: 'KVUM 파트너십과 스폰서십을 담당합니다. 기업 및 브랜드와의 협업을 이끌고 있습니다.',
       },
     ],
     staffTitle: 'Staff',
@@ -68,8 +66,8 @@ const CONTENT: Record<string, Content> = {
     heroSub: 'A team building a platform where Korea\'s XR users can connect and exchange information actively. Professionals from diverse backgrounds lead KVUM with their own experience.',
     members: [
       {
-        avatar: 'J', c1: '#FF2D7D', c2: '#00E0FF',
-        role: 'Host · CEO',
+        img: '/images/common/team/team-kimjunghyun.png',
+        role: 'Lead',
         name: 'Kim Junghyun', alias: 'JJum',
         bio: <>KVUM host and VR Insight blog operator.<br />Building a platform that connects Korea&apos;s XR market with its users. Leads event planning, partnerships, and overall operations.</>,
         links: [
@@ -79,16 +77,16 @@ const CONTENT: Record<string, Content> = {
         lead: true,
       },
       {
-        avatar: 'K', c1: '#7B2FF7', c2: '#00E0FF',
-        role: 'Organizer',
-        name: 'Kwon-bbaem',
-        bio: 'KVUM operations team. Helps with event planning and on-site execution.',
+        img: '/images/common/team/team-noyunkyung.png',
+        role: 'Designer',
+        name: 'Noh Yunkyung', alias: 'Soontan',
+        bio: "Leads KVUM's brand design and visual identity. Responsible for event visuals and content production.",
       },
       {
-        avatar: 'S', c1: '#FF2D7D', c2: '#FFB84D',
-        role: 'Organizer',
-        name: 'Soontan',
-        bio: 'KVUM operations team. Helps with event planning and on-site execution.',
+        img: '/images/common/team/team-kwonkihyun.png',
+        role: 'Sales',
+        name: 'Kwon Kihyun', alias: 'Kwon-bbaem',
+        bio: 'Leads KVUM partnerships and sponsorships. Drives collaborations with companies and brands.',
       },
     ],
     staffTitle: 'Staff',
@@ -103,8 +101,8 @@ const CONTENT: Record<string, Content> = {
     heroSub: '韓国の XR ユーザーが中心となって交流と情報交換を活発に行えるプラットフォームを作るチーム。多様なバックグラウンドの専門家が、それぞれの経験を基に KVUM を導いています。',
     members: [
       {
-        avatar: 'J', c1: '#FF2D7D', c2: '#00E0FF',
-        role: 'Host · 代表',
+        img: '/images/common/team/team-kimjunghyun.png',
+        role: 'Lead',
         name: 'キム・ジョンヒョン', alias: 'チュムチュム',
         bio: <>KVUM ホスト兼 VR Insight ブログ運営者。<br />韓国 XR 市場とユーザーをつなぐプラットフォームを構築中。イベント企画・パートナーシップ・全般運営を統括。</>,
         links: [
@@ -114,16 +112,16 @@ const CONTENT: Record<string, Content> = {
         lead: true,
       },
       {
-        avatar: 'K', c1: '#7B2FF7', c2: '#00E0FF',
-        role: 'Organizer',
-        name: 'クォンッペム',
-        bio: 'KVUM 運営チーム。イベント企画と当日現場進行を担当。',
+        img: '/images/common/team/team-noyunkyung.png',
+        role: 'Designer',
+        name: 'ノ・ユンギョン', alias: 'スンタン',
+        bio: 'KVUM のブランドデザインとビジュアルアイデンティティを担当。イベントビジュアルとコンテンツ制作を手がけています。',
       },
       {
-        avatar: 'S', c1: '#FF2D7D', c2: '#FFB84D',
-        role: 'Organizer',
-        name: 'スンタン',
-        bio: 'KVUM 運営チーム。イベント企画と当日現場進行を担当。',
+        img: '/images/common/team/team-kwonkihyun.png',
+        role: 'Sales',
+        name: 'クォン・ギヒョン', alias: 'クォンッペム',
+        bio: 'KVUM のパートナーシップとスポンサーシップを担当。企業・ブランドとのコラボレーションを牽引しています。',
       },
     ],
     staffTitle: 'Staff',
@@ -161,11 +159,8 @@ export function Team() {
                 key={i}
                 className={`team-card${m.lead ? ' team-card--lead' : ''}`}
               >
-                <div
-                  className="team-card__avatar"
-                  style={{ '--c1': m.c1, '--c2': m.c2 } as React.CSSProperties}
-                >
-                  {m.avatar}
+                <div className="team-card__avatar">
+                  <img src={m.img} alt={m.name} loading="lazy" />
                 </div>
                 <div className="team-card__role">{m.role}</div>
                 <h2 className="team-card__name">
