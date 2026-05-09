@@ -1,149 +1,106 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
+
+const INTERACTIVE_SELECTOR =
+  'a, button, [role="button"], input, textarea, select, label, [data-cursor-hover]';
+
+const RING_LERP = 0.15;
 
 export function CustomCursor() {
-  const dotRef  = useRef<HTMLDivElement>(null);
+  const clusterRef = useRef<HTMLDivElement>(null);
   const ringRef = useRef<HTMLDivElement>(null);
-  const [expanded, setExpanded] = useState(false);
-  const [label,    setLabel]    = useState('');
-  const [mounted,  setMounted]  = useState(false);
 
   useEffect(() => {
-    // Desktop-only: pointer: fine excludes touch/stylus-only devices
-    if (!window.matchMedia('(pointer: fine)').matches) return;
+    if (typeof window === 'undefined') return;
+    if (window.matchMedia('(hover: none)').matches) return;
 
-    setMounted(true);
+    const cluster = clusterRef.current;
+    const ring = ringRef.current;
+    if (!cluster || !ring) return;
 
-    // Hide default cursor globally
-    const style = document.createElement('style');
-    style.id = 'kvum-cursor-none';
-    style.textContent = '*, *::before, *::after { cursor: none !important; }';
-    document.head.appendChild(style);
-
-    let mx = 0, my = 0, dx = 0, dy = 0;
-    let rafId: number;
+    let mx = window.innerWidth / 2;
+    let my = window.innerHeight / 2;
+    let rx = mx;
+    let ry = my;
+    let visible = false;
 
     const onMove = (e: MouseEvent) => {
       mx = e.clientX;
       my = e.clientY;
-      // Dot snaps immediately
-      if (dotRef.current)
-        dotRef.current.style.transform = `translate(${mx}px, ${my}px)`;
+      if (!visible) {
+        visible = true;
+        cluster.style.opacity = '1';
+        ring.style.opacity = '1';
+      }
+      cluster.style.transform = `translate3d(${mx}px, ${my}px, 0)`;
     };
 
-    const tick = () => {
-      rafId = requestAnimationFrame(tick);
-      // Ring lerps behind — 0.13 lerp factor
-      dx += (mx - dx) * 0.13;
-      dy += (my - dy) * 0.13;
-      if (ringRef.current)
-        ringRef.current.style.transform = `translate(${dx}px, ${dy}px)`;
+    const onLeave = () => {
+      visible = false;
+      cluster.style.opacity = '0';
+      ring.style.opacity = '0';
     };
 
     const onOver = (e: MouseEvent) => {
-      const target = e.target as HTMLElement;
-      const isBtn  = !!target.closest('button');
-      const isLink = !!target.closest('a');
-      if (isBtn || isLink) {
-        setExpanded(true);
-        setLabel(isBtn ? 'CLICK' : '');
-      } else {
-        setExpanded(false);
-        setLabel('');
+      const target = e.target as HTMLElement | null;
+      if (target?.closest(INTERACTIVE_SELECTOR)) {
+        ring.classList.add('cursor-ring--hover');
+      }
+    };
+    const onOut = (e: MouseEvent) => {
+      const target = e.target as HTMLElement | null;
+      const related = e.relatedTarget as HTMLElement | null;
+      if (target?.closest(INTERACTIVE_SELECTOR) && !related?.closest(INTERACTIVE_SELECTOR)) {
+        ring.classList.remove('cursor-ring--hover');
       }
     };
 
-    window.addEventListener('mousemove', onMove, { passive: true });
-    window.addEventListener('mouseover', onOver);
-    tick();
+    let raf = 0;
+    const tick = () => {
+      rx += (mx - rx) * RING_LERP;
+      ry += (my - ry) * RING_LERP;
+      ring.style.transform = `translate3d(${rx}px, ${ry}px, 0) translate(-50%, -50%)`;
+      raf = requestAnimationFrame(tick);
+    };
+    raf = requestAnimationFrame(tick);
+
+    window.addEventListener('mousemove', onMove);
+    document.addEventListener('mouseleave', onLeave);
+    document.addEventListener('mouseover', onOver);
+    document.addEventListener('mouseout', onOut);
 
     return () => {
-      document.getElementById('kvum-cursor-none')?.remove();
+      cancelAnimationFrame(raf);
       window.removeEventListener('mousemove', onMove);
-      window.removeEventListener('mouseover', onOver);
-      cancelAnimationFrame(rafId);
+      document.removeEventListener('mouseleave', onLeave);
+      document.removeEventListener('mouseover', onOver);
+      document.removeEventListener('mouseout', onOut);
     };
   }, []);
 
-  if (!mounted) return null;
-
-  // Ring size: 26px default, 44px expanded
-  // margin: -(size/2) to center at transform origin
-  const ringSize   = expanded ? 44 : 26;
-  const ringMargin = -(ringSize / 2);
-
   return (
     <>
-      {/* Dot — snaps directly to cursor */}
-      <div
-        ref={dotRef}
-        style={{
-          position: 'fixed',
-          top: 0,
-          left: 0,
-          pointerEvents: 'none',
-          zIndex: 9999,
-          willChange: 'transform',
-        }}
-      >
-        <div
-          style={{
-            width: 6,
-            height: 6,
-            margin: '-3px',
-            borderRadius: '50%',
-            background: '#1a5cff',
-            boxShadow: '0 0 8px rgba(26,92,255,0.85)',
-          }}
-        />
-      </div>
-
-      {/* Ring — lags behind with lerp */}
-      <div
-        ref={ringRef}
-        style={{
-          position: 'fixed',
-          top: 0,
-          left: 0,
-          pointerEvents: 'none',
-          zIndex: 9998,
-          willChange: 'transform',
-        }}
-      >
-        <div
-          style={{
-            width: ringSize,
-            height: ringSize,
-            margin: `${ringMargin}px`,
-            borderRadius: '50%',
-            border: `1px solid rgba(26,92,255,${expanded ? 0.65 : 0.28})`,
-            boxShadow: expanded ? '0 0 14px rgba(26,92,255,0.14)' : 'none',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            transition:
-              'width 0.18s ease, height 0.18s ease, margin 0.18s ease, ' +
-              'border-color 0.18s ease, box-shadow 0.18s ease',
-          }}
+      <div ref={clusterRef} className="cursor-cluster" aria-hidden="true">
+        <div className="cursor-dot" />
+        <svg
+          className="cursor-vr"
+          viewBox="0 0 18 9"
+          width="36"
+          height="18"
+          shapeRendering="crispEdges"
         >
-          {expanded && label && (
-            <span
-              style={{
-                color: 'rgba(26,92,255,0.75)',
-                fontSize: '0.34rem',
-                letterSpacing: '0.18em',
-                fontFamily: 'monospace',
-                textTransform: 'uppercase',
-                userSelect: 'none',
-                whiteSpace: 'nowrap',
-              }}
-            >
-              {label}
-            </span>
-          )}
-        </div>
+          {/* black border (1px on all sides) */}
+          <rect x="0" y="0" width="18" height="9" fill="#000000" />
+          {/* white frame */}
+          <rect x="1" y="1" width="16" height="7" fill="#ffffff" />
+          {/* left lens */}
+          <rect x="3" y="3" width="5" height="3" fill="#00ccff" />
+          {/* right lens */}
+          <rect x="10" y="3" width="5" height="3" fill="#00ccff" />
+        </svg>
       </div>
+      <div ref={ringRef} className="cursor-ring" aria-hidden="true" />
     </>
   );
 }

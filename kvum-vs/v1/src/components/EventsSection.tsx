@@ -2,6 +2,7 @@
 
 import { useLocale } from 'next-intl';
 import Image from 'next/image';
+import { Link } from '@/i18n/navigation';
 
 type HistoryCard = {
   tag: string;
@@ -95,12 +96,6 @@ export function EventsSection() {
   const cards = CARDS[locale] ?? CARDS.ko;
   const jc = JOIN_CONTENT[locale] ?? JOIN_CONTENT.ko;
 
-  const scrollTo = (id: string) => {
-    const el = document.getElementById(id);
-    if (!el) return;
-    window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 80, behavior: 'smooth' });
-  };
-
   return (
     <section className="section section--history" id="history">
       <div className="container">
@@ -140,16 +135,12 @@ export function EventsSection() {
               <span>{jc.badge}</span>
             </div>
             <h3 className="join__title">{jc.title}</h3>
-            <a
-              href="#join"
-              className="join__cta"
-              onClick={e => { e.preventDefault(); scrollTo('join'); }}
-            >
+            <Link href="/5th" className="join__cta">
               {jc.cta}
               <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
                 <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
-            </a>
+            </Link>
           </div>
 
           <div className="join__right">

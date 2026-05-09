@@ -7,6 +7,8 @@ import { getMessages } from 'next-intl/server';
 import { Navigation } from '@/components/Navigation';
 import { Footer } from '@/components/Footer';
 import { ScrollTopButton } from '@/components/ScrollTopButton';
+import { PixelCat } from '@/components/PixelCat';
+import { CustomCursor } from '@/components/CustomCursor';
 
 export const metadata: Metadata = {
   title: 'KVUM · Korea VR User Meetup',
@@ -66,6 +68,8 @@ export default async function LocaleLayout({
           {children}
           <Footer />
           <ScrollTopButton />
+          <PixelCat />
+          <CustomCursor />
         </NextIntlClientProvider>
       </body>
     </html>
