@@ -13,7 +13,7 @@ const PROGRAMS: Record<string, ProgramItem[]> = {
     { cls: 'program--3', num: '03 — NETWORKING', title: '자유 토론 & 네트워킹',
       desc: <>유저 · 개발자 · 업계 관계자 간 <strong>자유로운 소통</strong> 시간. 장비를 체험하며 서로의 경험을 나누고, 전문 통역가 지원으로 해외 게스트와도 막힘없이 대화할 수 있습니다.</> },
     { cls: 'program--4', num: '04 — PRIZES', title: '경품 & 깜짝 이벤트',
-      desc: <>참가자와 후원 기업이 함께하는 이벤트. 4회차엔 <strong>PICO 4 Ultra</strong> · 뮤토크 2 · bHaptics 스타터 번들 · AMVR 세트 등 <strong>11종 21명 추첨</strong>이 진행되었습니다.</> },
+      desc: <>참가자와 후원 기업이 함께하는 이벤트. 4회차엔 <strong>PICO 4 Ultra</strong> · 뮤토크 2 · bHaptics 스타터 번들 · AMVR 세트 등 <strong>다양한 경품 추첨</strong>이 진행되었습니다.</> },
   ],
   en: [
     { cls: 'program--1', num: '01 — XR DEVICES', title: 'XR device hands-on zone',
@@ -23,7 +23,7 @@ const PROGRAMS: Record<string, ProgramItem[]> = {
     { cls: 'program--3', num: '03 — NETWORKING', title: 'Open discussion & networking',
       desc: <>Free <strong>cross-communication</strong> among users, developers, and industry folks. Try the gear, share your story, and chat smoothly with international guests via professional interpreters.</> },
     { cls: 'program--4', num: '04 — PRIZES', title: 'Prizes & surprise events',
-      desc: <>Co-hosted raffle events with sponsor companies. At the 4th KVUM, <strong>PICO 4 Ultra</strong>, mutalk 2, bHaptics Starter Bundle, AMVR Set and more — <strong>11 prizes for 21 winners</strong>.</> },
+      desc: <>Co-hosted raffle events with sponsor companies. At the 4th KVUM, <strong>PICO 4 Ultra</strong>, mutalk 2, bHaptics Starter Bundle, AMVR Set and more — <strong>a wide raffle lineup</strong>.</> },
   ],
   ja: [
     { cls: 'program--1', num: '01 — XR DEVICES', title: 'XR デバイス体験ゾーン',
@@ -33,7 +33,7 @@ const PROGRAMS: Record<string, ProgramItem[]> = {
     { cls: 'program--3', num: '03 — NETWORKING', title: '自由討論 & ネットワーキング',
       desc: <>ユーザー · 開発者 · 業界関係者間の <strong>自由なコミュニケーション</strong>時間。機器を体験しながら経験を共有し、専門通訳のサポートで海外ゲストとも会話が弾みます。</> },
     { cls: 'program--4', num: '04 — PRIZES', title: '景品 & サプライズイベント',
-      desc: <>参加者と後援企業が共に楽しむイベント。第4回では <strong>PICO 4 Ultra</strong> · mutalk 2 · bHaptics スターターバンドル · AMVR セットなど <strong>11種21名抽選</strong>が行われました。</> },
+      desc: <>参加者と後援企業が共に楽しむイベント。第4回では <strong>PICO 4 Ultra</strong> · mutalk 2 · bHaptics スターターバンドル · AMVR セットなど <strong>多彩な景品抽選</strong>が行われました。</> },
   ],
 };
 
