@@ -1,0 +1,118 @@
+{
+  "Common": {
+    "loading": "Loading...",
+    "error": "An error occurred",
+    "backToHome": "Back to home"
+  },
+  "Navigation": {
+    "home": "Home",
+    "about": "About",
+    "events": "Events",
+    "team": "Team",
+    "partners": "Partners"
+  },
+  "Home": {
+    "tagline": "Korea VR User Meetup",
+    "subtitle": "A space for communication and harmony where users lead discussions on XR topics",
+    "cta_primary": "Explore 5th Event",
+    "cta_secondary": "View Past Events",
+    "scroll_hint": "Scroll"
+  },
+  "About": {
+    "label": "About",
+    "title": "KVUM",
+    "tagline": "Korea VR User Meetup",
+    "description": "An offline community where XR users come together to connect, experience, and network.",
+    "stat1_num": "4",
+    "stat1_label": "Events",
+    "stat2_num": "200+",
+    "stat2_label": "Attendees",
+    "stat3_num": "20+",
+    "stat3_label": "Partners"
+  },
+  "Value": {
+    "label": "What We Do",
+    "title": "Our Activities",
+    "item1_title": "Community",
+    "item1_desc": "A volunteer-driven offline gathering centered around Korean XR users",
+    "item2_title": "Experience",
+    "item2_desc": "Hands-on space to try the latest VR and AR devices and content",
+    "item3_title": "Networking",
+    "item3_desc": "A natural gathering point for developers, creators, and users",
+    "item4_title": "Speaker Sessions",
+    "item4_desc": "Live insights from XR industry experts and influencers"
+  },
+  "EventFifth": {
+    "label": "Next Event",
+    "title": "KVUM 5TH",
+    "date": "October 3, 2026",
+    "location": "Seoul Mullae",
+    "target_label": "Who",
+    "target": "XR users, developers, industry professionals, content creators",
+    "capacity_label": "Capacity",
+    "capacity": "TBA",
+    "fees_label": "Admission",
+    "fees": "TBA",
+    "registration_label": "Registration",
+    "registration": "Via community · SNS · group chat",
+    "benefits_label": "Program",
+    "benefit_01": "XR Device Experience",
+    "benefit_02": "Guest Speaker Sessions",
+    "benefit_03": "Open Discussion & Networking",
+    "benefit_04": "Prize Events",
+    "contact_label": "Get in Touch",
+    "contact_kakao_title": "KakaoTalk Open Chat",
+    "contact_kakao_desc": "Event news · live updates",
+    "contact_email_title": "future1070@naver.com",
+    "contact_email_desc": "Partnerships · general inquiries",
+    "contact_x_title": "@vum_k67455",
+    "contact_x_desc": "Official X (Twitter)",
+    "contact_blog_title": "VR Insight",
+    "contact_blog_desc": "Naver Blog"
+  },
+  "Events": {
+    "label": "Past Events",
+    "title": "EVENTS",
+    "subtitle": "From a party room to a 250-pyeong exhibition hall — four meetups that grew in scale and impact, and more to come.",
+    "view_photos": "View Photos",
+    "attendees_label": "Attendees",
+    "speakers_label": "Speakers",
+    "partners_label": "Partners"
+  },
+  "Gallery": {
+    "label": "Moments",
+    "title": "GALLERY",
+    "cta": "View All Photos"
+  },
+  "Team": {
+    "label": "Team",
+    "title": "TEAM",
+    "member1_bio": "KVUM host and VR Insight blog operator. Building a platform that connects Korea's XR market with its users.",
+    "member2_bio": "Handles event planning and on-site coordination.",
+    "member3_bio": "Responsible for KVUM's design and brand experience.",
+    "join_label": "Join KVUM",
+    "join_title": "We're looking for people to join us.",
+    "join_desc": "If you want to help grow the XR community or are interested in event operations, reach out anytime.",
+    "join_cta": "Contact us"
+  },
+  "Partners": {
+    "label": "Partners",
+    "title": "PARTNERS",
+    "label_sponsors": "Sponsors",
+    "label_community": "Community Partners"
+  },
+  "CTA": {
+    "label": "Next Event",
+    "title": "KVUM 5TH",
+    "date": "2026 · 10 · 03",
+    "subtitle": "The fifth gathering of Korea's XR community. Your seat is waiting.",
+    "cta_primary": "View Events",
+    "cta_secondary": "View Events"
+  },
+  "Footer": {
+    "rights": "2025. KVUM all rights reserved.",
+    "representative": "KVUM | VR Insight · CEO Kim Junghyun",
+    "email_label": "Email",
+    "openchat_label": "KakaoTalk Open Chat"
+  }
+}

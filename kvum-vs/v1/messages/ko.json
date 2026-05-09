@@ -1,0 +1,118 @@
+{
+  "Common": {
+    "loading": "로딩 중...",
+    "error": "오류가 발생했습니다",
+    "backToHome": "홈으로 돌아가기"
+  },
+  "Navigation": {
+    "home": "홈",
+    "about": "소개",
+    "events": "행사",
+    "team": "팀",
+    "partners": "파트너"
+  },
+  "Home": {
+    "tagline": "Korea VR User Meetup",
+    "subtitle": "사용자가 주축이 되어 XR 주제의 커뮤니케이션을 나누는 소통과 화합의 장",
+    "cta_primary": "5th 행사 알아보기",
+    "cta_secondary": "지난 행사 보기",
+    "scroll_hint": "스크롤"
+  },
+  "About": {
+    "label": "소개",
+    "title": "KVUM",
+    "tagline": "Korea VR User Meetup",
+    "description": "국내 XR 유저가 주축이 되어 소통·체험·네트워킹을 나누는 오프라인 커뮤니티.",
+    "stat1_num": "4",
+    "stat1_label": "이벤트",
+    "stat2_num": "200+",
+    "stat2_label": "누적 참가자",
+    "stat3_num": "20+",
+    "stat3_label": "파트너사"
+  },
+  "Value": {
+    "label": "활동 소개",
+    "title": "우리가 하는 것",
+    "item1_title": "커뮤니티",
+    "item1_desc": "국내 XR 유저가 중심이 되는 자발적인 오프라인 모임",
+    "item2_title": "체험",
+    "item2_desc": "최신 VR·AR 기기와 콘텐츠를 직접 경험하는 공간",
+    "item3_title": "네트워킹",
+    "item3_desc": "개발자·크리에이터·유저가 자연스럽게 연결되는 교류",
+    "item4_title": "연사 세션",
+    "item4_desc": "XR 업계 전문가와 인플루언서의 생생한 인사이트"
+  },
+  "EventFifth": {
+    "label": "Next Event",
+    "title": "KVUM 5TH",
+    "date": "2026년 10월 3일",
+    "location": "서울 문래",
+    "target_label": "대상",
+    "target": "XR 유저, 개발자, 업계 관련자, 콘텐츠 제작자",
+    "capacity_label": "모집 인원",
+    "capacity": "추후 공지",
+    "fees_label": "참가비",
+    "fees": "추후 공지",
+    "registration_label": "참가 신청",
+    "registration": "커뮤니티 · SNS · 단톡방을 통해 공지",
+    "benefits_label": "프로그램",
+    "benefit_01": "XR 디바이스 체험",
+    "benefit_02": "연사 초청 세션",
+    "benefit_03": "자유 토론 & 네트워킹",
+    "benefit_04": "경품 이벤트",
+    "contact_label": "연락하기",
+    "contact_kakao_title": "오픈 카카오톡",
+    "contact_kakao_desc": "참가 소식 · 실시간 공지",
+    "contact_email_title": "future1070@naver.com",
+    "contact_email_desc": "파트너십 · 일반 문의",
+    "contact_x_title": "@vum_k67455",
+    "contact_x_desc": "공식 X (트위터)",
+    "contact_blog_title": "VR 인사이트",
+    "contact_blog_desc": "네이버 블로그"
+  },
+  "Events": {
+    "label": "지난 행사",
+    "title": "EVENTS",
+    "subtitle": "파티룸에서 시작해 250평 전시장까지 — 규모와 영향력을 함께 키워온 네 번의 밋업, 그리고 앞으로.",
+    "view_photos": "사진 보기",
+    "attendees_label": "참가자",
+    "speakers_label": "연사",
+    "partners_label": "파트너"
+  },
+  "Gallery": {
+    "label": "지난 순간들",
+    "title": "GALLERY",
+    "cta": "모든 사진 보기"
+  },
+  "Team": {
+    "label": "팀",
+    "title": "TEAM",
+    "member1_bio": "KVUM 호스트이자 VR Insight 블로그 운영자. 국내 XR 시장과 사용자를 잇는 플랫폼을 만들고 있습니다.",
+    "member2_bio": "행사 기획과 현장 진행을 함께 맡고 있습니다.",
+    "member3_bio": "KVUM의 디자인과 브랜드 경험을 담당합니다.",
+    "join_label": "Join KVUM",
+    "join_title": "함께할 분을 찾고 있어요.",
+    "join_desc": "XR 커뮤니티를 함께 키우고 싶은 분, 행사 운영에 관심 있는 분이라면 언제든 연락 주세요.",
+    "join_cta": "Contact us"
+  },
+  "Partners": {
+    "label": "파트너",
+    "title": "PARTNERS",
+    "label_sponsors": "후원사",
+    "label_community": "커뮤니티 파트너"
+  },
+  "CTA": {
+    "label": "Next Event",
+    "title": "KVUM 5TH",
+    "date": "2026 · 10 · 03",
+    "subtitle": "국내 XR 커뮤니티의 다섯 번째 모임. 당신의 자리가 기다립니다.",
+    "cta_primary": "이벤트 보기",
+    "cta_secondary": "이벤트 보기"
+  },
+  "Footer": {
+    "rights": "2025. KVUM all rights reserved.",
+    "representative": "KVUM | VR Insight 대표 김정현",
+    "email_label": "이메일",
+    "openchat_label": "카카오 오픈채팅"
+  }
+}
