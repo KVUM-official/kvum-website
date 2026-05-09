@@ -10,38 +10,17 @@ type FooterLink =
   | { kind: 'page'; href: '/5th' | '/gallery' | '/team'; label: string }
   | { kind: 'external'; href: string; label: string };
 
-const NAV_LINKS: Record<string, FooterLink[]> = {
-  ko: [
-    { kind: 'home', label: '홈' },
-    { kind: 'anchor', id: 'kvum',    label: 'KVUM이란?' },
-    { kind: 'anchor', id: 'values',  label: '네 가지 가치' },
-    { kind: 'anchor', id: 'history', label: 'KVUM 히스토리' },
-    { kind: 'page', href: '/5th',     label: '5th KVUM' },
-    { kind: 'page', href: '/gallery', label: 'Gallery' },
-    { kind: 'page', href: '/team',    label: 'KVUM Team' },
-    { kind: 'external', href: 'https://blog.naver.com/vr_insight', label: 'VR Insight ↗' },
-  ],
-  en: [
-    { kind: 'home', label: 'Home' },
-    { kind: 'anchor', id: 'kvum',    label: 'About KVUM' },
-    { kind: 'anchor', id: 'values',  label: 'Four Values' },
-    { kind: 'anchor', id: 'history', label: 'History' },
-    { kind: 'page', href: '/5th',     label: '5th KVUM' },
-    { kind: 'page', href: '/gallery', label: 'Gallery' },
-    { kind: 'page', href: '/team',    label: 'KVUM Team' },
-    { kind: 'external', href: 'https://blog.naver.com/vr_insight', label: 'VR Insight ↗' },
-  ],
-  ja: [
-    { kind: 'home', label: 'ホーム' },
-    { kind: 'anchor', id: 'kvum',    label: 'KVUMとは？' },
-    { kind: 'anchor', id: 'values',  label: '四つの価値' },
-    { kind: 'anchor', id: 'history', label: 'ヒストリー' },
-    { kind: 'page', href: '/5th',     label: '第5回 KVUM' },
-    { kind: 'page', href: '/gallery', label: 'ギャラリー' },
-    { kind: 'page', href: '/team',    label: 'KVUM チーム' },
-    { kind: 'external', href: 'https://blog.naver.com/vr_insight', label: 'VR Insight ↗' },
-  ],
-};
+// English-only labels (matches GNB style)
+const NAV_LINKS: FooterLink[] = [
+  { kind: 'home', label: 'Home' },
+  { kind: 'anchor', id: 'kvum',    label: 'About' },
+  { kind: 'anchor', id: 'values',  label: 'Values' },
+  { kind: 'anchor', id: 'history', label: 'History' },
+  { kind: 'page', href: '/5th',     label: '5th KVUM' },
+  { kind: 'page', href: '/gallery', label: 'Gallery' },
+  { kind: 'page', href: '/team',    label: 'Team' },
+  { kind: 'external', href: 'https://blog.naver.com/vr_insight', label: 'VR Insight ↗' },
+];
 
 const FOOTER_DESC: Record<string, React.ReactNode> = {
   ko: <>국내 XR 유저 · 개발자 · 기업이 모이는<br />국내 최대 규모의 XR 유저 밋업.<br />2024년부터 지금까지, 그리고 앞으로도.</>,
@@ -52,7 +31,7 @@ const FOOTER_DESC: Record<string, React.ReactNode> = {
 export function Footer() {
   const locale = useLocale();
   const pathname = usePathname();
-  const links = NAV_LINKS[locale] ?? NAV_LINKS.ko;
+  const links = NAV_LINKS;
   const isHome = pathname === '/';
 
   const handleAnchorClick = (e: React.MouseEvent, id: string) => {
