@@ -50,7 +50,7 @@ const CONTENT: Record<string, Content> = {
   ko: {
     heroLabel: 'Gallery',
     heroTitle: <>KVUM 현장의<br /><span className="grad">순간들.</span></>,
-    heroSub: '1회차부터 4회차까지 — 파티룸에서 시작해 250평 전시장까지, KVUM이 기록한 XR 커뮤니티의 발자취입니다.',
+    heroSub: '1회차부터 4회차까지 — 파티룸에서 시작해 대형 전시장까지, KVUM이 기록한 XR 커뮤니티의 발자취입니다.',
     tabs: [
       { id: 'g-4th', num: '04', label: '4th · 2025.10', active: true },
       { id: 'g-3rd', num: '03', label: '3rd · 2025.03' },
@@ -61,23 +61,23 @@ const CONTENT: Record<string, Content> = {
     blocks: {
       fourth: {
         id: 'g-4th', num: '04', date: '2025 · 10 · 03', place: '서울 문래',
-        title: <>첫 XR 축제, <span className="grad">250평을 가득 채우다.</span></>,
-        desc: '200여 명의 참가자, 11개 파트너사, 5명의 연사가 함께한 역대 최대 규모 밋업.',
+        title: <>첫 XR 축제, <span className="grad">전시장을 가득 채우다.</span></>,
+        desc: '역대 최대 규모로, 다수의 파트너사와 연사가 함께한 밋업.',
       },
       third: {
         id: 'g-3rd', num: '03', date: '2025 · 03',
         title: <>국내 최대 규모로 <span className="grad">자리잡다.</span></>,
-        desc: '70여 명의 참가자와 함께 국내 최대 XR 유저 중심 오프라인 행사로 성장.',
+        desc: '국내 최대 XR 유저 중심 오프라인 행사로 성장한 회차.',
       },
       second: {
         id: 'g-2nd', num: '02', date: '2024 · 06',
         title: <>참여가 <span className="grad">본격적으로 확대되다.</span></>,
-        desc: '기업과 기관의 참여가 확장된 두 번째 밋업. 약 60명 참가.',
+        desc: '기업과 기관의 참여가 확장된 두 번째 밋업.',
       },
       first: {
         id: 'g-1st', num: '01', date: '2024 · 03',
         title: <>모든 것의 <span className="grad">시작.</span></>,
-        desc: '서울 사당의 작은 파티룸에서 시작된 첫 VR 유저 밋업. 약 30명.',
+        desc: '서울 사당의 작은 파티룸에서 시작된 첫 VR 유저 밋업.',
       },
       values: {
         id: 'g-values', num: '★', date: 'KVUM의 장면들',
@@ -96,7 +96,7 @@ const CONTENT: Record<string, Content> = {
   en: {
     heroLabel: 'Gallery',
     heroTitle: <>Moments from<br /><span className="grad">KVUM.</span></>,
-    heroSub: 'From the 1st to the 4th — starting in a party room and growing to a 250-pyeong exhibition hall, the journey of Korea\'s XR community as recorded by KVUM.',
+    heroSub: 'From the 1st to the 4th — starting in a party room and growing to a full exhibition hall, the journey of Korea\'s XR community as recorded by KVUM.',
     tabs: [
       { id: 'g-4th', num: '04', label: '4th · 2025.10', active: true },
       { id: 'g-3rd', num: '03', label: '3rd · 2025.03' },
@@ -107,23 +107,23 @@ const CONTENT: Record<string, Content> = {
     blocks: {
       fourth: {
         id: 'g-4th', num: '04', date: '2025 · 10 · 03', place: 'Seoul Mullae',
-        title: <>The first XR festival — <span className="grad">filling 250 pyeong.</span></>,
-        desc: 'Our largest meetup ever, with 200+ attendees, 11 partners, and 5 speakers.',
+        title: <>The first XR festival — <span className="grad">filling the hall.</span></>,
+        desc: 'Our largest meetup ever, joined by many partners and speakers.',
       },
       third: {
         id: 'g-3rd', num: '03', date: '2025 · 03',
         title: <>Establishing as <span className="grad">Korea&apos;s largest.</span></>,
-        desc: 'Grew into Korea\'s largest user-driven XR offline event with 70+ participants.',
+        desc: 'Grew into Korea\'s largest user-driven XR offline event.',
       },
       second: {
         id: 'g-2nd', num: '02', date: '2024 · 06',
         title: <>Participation <span className="grad">expands in earnest.</span></>,
-        desc: 'The second meetup with broader participation from companies and institutions. About 60 attendees.',
+        desc: 'The second meetup with broader participation from companies and institutions.',
       },
       first: {
         id: 'g-1st', num: '01', date: '2024 · 03',
         title: <>The start of <span className="grad">everything.</span></>,
-        desc: 'Our first VR user meetup, started in a small party room in Sadang, Seoul. About 30 attendees.',
+        desc: 'Our first VR user meetup, started in a small party room in Sadang, Seoul.',
       },
       values: {
         id: 'g-values', num: '★', date: 'Scenes of KVUM',
@@ -142,7 +142,7 @@ const CONTENT: Record<string, Content> = {
   ja: {
     heroLabel: 'Gallery',
     heroTitle: <>KVUM 現場の<br /><span className="grad">瞬間たち。</span></>,
-    heroSub: '第1回から第4回まで — パーティールームから250坪の展示場まで、KVUM が記録した XR コミュニティの軌跡です。',
+    heroSub: '第1回から第4回まで — パーティールームから大型展示場まで、KVUM が記録した XR コミュニティの軌跡です。',
     tabs: [
       { id: 'g-4th', num: '04', label: '4th · 2025.10', active: true },
       { id: 'g-3rd', num: '03', label: '3rd · 2025.03' },
@@ -153,23 +153,23 @@ const CONTENT: Record<string, Content> = {
     blocks: {
       fourth: {
         id: 'g-4th', num: '04', date: '2025 · 10 · 03', place: 'ソウル・ムルレ',
-        title: <>初の XR フェスティバル、<span className="grad">250坪を満たす。</span></>,
-        desc: '200名超の参加者、11のパートナー企業、5名のスピーカーが共にした史上最大規模のミートアップ。',
+        title: <>初の XR フェスティバル、<span className="grad">展示場を満たす。</span></>,
+        desc: '史上最大規模のミートアップ。多くのパートナー企業とスピーカーが共に参加。',
       },
       third: {
         id: 'g-3rd', num: '03', date: '2025 · 03',
         title: <>韓国最大規模として <span className="grad">確立する。</span></>,
-        desc: '70名余りの参加者と共に、韓国最大の XR ユーザー中心オフラインイベントへと成長。',
+        desc: '韓国最大の XR ユーザー中心オフラインイベントへと成長した回。',
       },
       second: {
         id: 'g-2nd', num: '02', date: '2024 · 06',
         title: <>参加が <span className="grad">本格的に拡大。</span></>,
-        desc: '企業と機関の参加が広がった第2回ミートアップ。約60名参加。',
+        desc: '企業と機関の参加が広がった第2回ミートアップ。',
       },
       first: {
         id: 'g-1st', num: '01', date: '2024 · 03',
         title: <>すべての <span className="grad">始まり。</span></>,
-        desc: 'ソウル・サダンの小さなパーティールームで始まった初の VR ユーザーミートアップ。約30名。',
+        desc: 'ソウル・サダンの小さなパーティールームで始まった初の VR ユーザーミートアップ。',
       },
       values: {
         id: 'g-values', num: '★', date: 'KVUM のシーン',

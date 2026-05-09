@@ -6,7 +6,7 @@ import { Link, useRouter, usePathname } from '@/i18n/navigation';
 import { routing, type Locale } from '@/i18n/routing';
 import Image from 'next/image';
 
-const LOCALE_LABELS: Record<string, string> = { ko: 'KO', en: 'EN', ja: 'JA' };
+const LOCALE_LABELS: Record<string, string> = { ko: 'KO', en: 'EN', ja: 'JP' };
 
 type PageItem = { kind: 'page'; href: '/5th' | '/gallery' | '/team'; label: string };
 type ExternalItem = { kind: 'external'; href: string; label: string };

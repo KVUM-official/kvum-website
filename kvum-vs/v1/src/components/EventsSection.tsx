@@ -18,44 +18,44 @@ const CARDS: Record<string, HistoryCard[]> = {
   ko: [
     { tag: '1ST', date: '2024 · 03', imgSrc: '/images/photos/history-1st.jpg', imgAlt: '1st KVUM',
       title: '첫 VR 유저 밋업', desc: 'XR 커뮤니티 유저와 업계 관계자가 처음으로 한자리에 모인 KVUM의 시작.',
-      meta: <><span><strong>30</strong> 명 참가</span><span>파티룸 규모</span></> },
+      meta: <><span><strong>첫 시작</strong></span><span>파티룸 규모</span></> },
     { tag: '2ND', date: '2024 · 06', imgSrc: '/images/photos/history-2nd.jpg', imgAlt: '2nd KVUM',
       title: '참여 확대', desc: '기업 및 기관 참여가 본격적으로 확장된 2회차 밋업.',
-      meta: <><span><strong>60</strong> 명 참가</span><span>기업 참여 시작</span></> },
+      meta: <><span><strong>참여 확장</strong></span><span>기업 참여 시작</span></> },
     { tag: '3RD', date: '2025 · 03', imgSrc: '/images/photos/history-3rd.jpg', imgAlt: '3rd KVUM',
       title: '국내 최대 규모로', desc: 'XR 기업 · 개발자 · 커뮤니티 유저가 모인 국내 최대 XR 유저 중심 오프라인 행사.',
-      meta: <><span><strong>70+</strong> 명 참가</span><span>국내 최대 XR 밋업</span></> },
+      meta: <><span><strong>유저 중심 행사</strong></span><span>국내 최대 XR 밋업</span></> },
     { tag: '4TH', date: '2025 · 10 · 03', imgSrc: '/images/photos/history-4th.jpg', imgAlt: '4th KVUM',
       title: '첫 XR 축제', desc: '문래 전시장에서 열린 역대 최대 규모 밋업. 기업 · 유저 · 현직자를 잇는 진정한 XR 축제의 문을 열었습니다.',
-      meta: <><span><strong>200+</strong> 명 참가</span><span>11 파트너 · 5 연사</span></> },
+      meta: <><span><strong>역대 최대 규모</strong></span><span>문래 전시장 개최</span></> },
   ],
   en: [
     { tag: '1ST', date: '2024 · 03', imgSrc: '/images/photos/history-1st.jpg', imgAlt: '1st KVUM',
       title: 'The first VR user meetup', desc: 'Where XR community users and industry professionals first sat down together.',
-      meta: <><span><strong>30</strong> attendees</span><span>Party room</span></> },
+      meta: <><span><strong>First gathering</strong></span><span>Party room</span></> },
     { tag: '2ND', date: '2024 · 06', imgSrc: '/images/photos/history-2nd.jpg', imgAlt: '2nd KVUM',
       title: 'Wider participation', desc: 'Corporate and institutional participation began expanding in earnest.',
-      meta: <><span><strong>60</strong> attendees</span><span>Company sponsors</span></> },
+      meta: <><span><strong>Wider reach</strong></span><span>Company sponsors</span></> },
     { tag: '3RD', date: '2025 · 03', imgSrc: '/images/photos/history-3rd.jpg', imgAlt: '3rd KVUM',
       title: "Korea's largest XR meetup", desc: "XR companies, developers, and community users — the largest user-driven XR offline event in Korea.",
-      meta: <><span><strong>70+</strong> attendees</span><span>Korea&apos;s largest</span></> },
+      meta: <><span><strong>User-driven</strong></span><span>Korea&apos;s largest</span></> },
     { tag: '4TH', date: '2025 · 10 · 03', imgSrc: '/images/photos/history-4th.jpg', imgAlt: '4th KVUM',
       title: 'The first XR festival', desc: "Our largest-ever meetup, held at the Mullae exhibition hall. A true XR festival connecting companies, users, and professionals.",
-      meta: <><span><strong>200+</strong> attendees</span><span>11 partners · 5 speakers</span></> },
+      meta: <><span><strong>Largest ever</strong></span><span>Mullae exhibition hall</span></> },
   ],
   ja: [
     { tag: '1ST', date: '2024 · 03', imgSrc: '/images/photos/history-1st.jpg', imgAlt: '1st KVUM',
       title: '第1回 VR ユーザーミートアップ', desc: 'XR コミュニティユーザーと業界関係者が初めて一堂に会した KVUM の始まり。',
-      meta: <><span><strong>30</strong> 名参加</span><span>パーティールーム</span></> },
+      meta: <><span><strong>初開催</strong></span><span>パーティールーム</span></> },
     { tag: '2ND', date: '2024 · 06', imgSrc: '/images/photos/history-2nd.jpg', imgAlt: '2nd KVUM',
       title: '参加者拡大', desc: '企業・機関の参加が本格的に拡大した第2回ミートアップ。',
-      meta: <><span><strong>60</strong> 名参加</span><span>企業参加開始</span></> },
+      meta: <><span><strong>参加拡大</strong></span><span>企業参加開始</span></> },
     { tag: '3RD', date: '2025 · 03', imgSrc: '/images/photos/history-3rd.jpg', imgAlt: '3rd KVUM',
       title: '韓国最大規模へ', desc: 'XR 企業・開発者・コミュニティユーザーが集まった韓国最大の XR ユーザー中心オフラインイベント。',
-      meta: <><span><strong>70+</strong> 名参加</span><span>韓国最大 XR ミートアップ</span></> },
+      meta: <><span><strong>ユーザー中心</strong></span><span>韓国最大 XR ミートアップ</span></> },
     { tag: '4TH', date: '2025 · 10 · 03', imgSrc: '/images/photos/history-4th.jpg', imgAlt: '4th KVUM',
       title: '初の XR フェスティバル', desc: '文來展示場で開催された史上最大規模のミートアップ。企業・ユーザー・現職者をつなぐ真の XR フェスティバルの幕を開けました。',
-      meta: <><span><strong>200+</strong> 名参加</span><span>11 パートナー · 5 スピーカー</span></> },
+      meta: <><span><strong>史上最大規模</strong></span><span>文來展示場</span></> },
   ],
 };
 
@@ -105,9 +105,9 @@ export function EventsSection() {
         </div>
         <h2 className="section__title">{jc.heading}</h2>
         <p className="section__lead">
-          {locale === 'ko' && '파티룸에서 시작해 250평 전시장까지 — 규모와 영향력을 함께 키워온 네 번의 밋업, 그리고 앞으로.'}
+          {locale === 'ko' && '파티룸에서 시작해 대형 전시장까지 — 규모와 영향력을 함께 키워온 네 번의 밋업, 그리고 앞으로.'}
           {locale === 'en' && 'From a party room to a full exhibition hall. Four meetups we\'ve grown through — and what\'s coming next.'}
-          {locale === 'ja' && 'パーティルームから250坪の展示会場まで — 規模と影響力を共に拡大してきた4回のミートアップ、そしてこれから。'}
+          {locale === 'ja' && 'パーティルームから大型展示会場まで — 規模と影響力を共に拡大してきた4回のミートアップ、そしてこれから。'}
         </p>
 
         <div className="history__grid">
