@@ -1126,20 +1126,7 @@ ul  { list-style: none; }
 /* ============ ANCHOR OFFSET ============ */
 #kvum, #values, #history { scroll-margin-top: 90px; }
 
-/* ============ NAV — anchor/page separator ============ */
-.nav__menu .nav__sep-before {
-  position: relative;
-  padding-left: 28px;
-  margin-left: 4px;
-}
-.nav__menu .nav__sep-before::before {
-  content: '';
-  position: absolute;
-  left: 0; top: 50%;
-  width: 1px; height: 14px;
-  background: var(--line);
-  transform: translateY(-50%);
-}
+/* ============ NAV — mobile lang section ============ */
 .nav__lang--mobile {
   padding-left: 0 !important;
   border-left: none !important;
@@ -1147,17 +1134,66 @@ ul  { list-style: none; }
   padding-top: 12px !important;
   margin-top: 6px;
 }
-/* On mobile, the menu stacks vertically — the vertical separator
-   becomes a horizontal divider above the page-group items */
-@media (max-width: 900px) {
-  .nav__menu .nav__sep-before {
-    padding-left: 0;
-    margin-left: 0;
-    margin-top: 8px;
-    padding-top: 16px;
-    border-top: 1px solid var(--line);
-  }
-  .nav__menu .nav__sep-before::before { display: none; }
+
+/* ============ FLOATING SECTION NAV (home only, desktop only) ============ */
+.section-nav {
+  position: fixed;
+  right: 24px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 50;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 14px 12px;
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  border-radius: 100px;
+  box-shadow: 0 10px 30px -14px rgba(10, 10, 20, 0.12);
+}
+.section-nav__item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 7px 12px;
+  border-radius: 100px;
+  font-family: var(--font-display);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-4);
+  text-decoration: none;
+  transition: color .2s ease, background .2s ease, padding .2s ease;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.section-nav__item:hover {
+  color: var(--ink);
+  background: rgba(10, 10, 20, 0.04);
+}
+.section-nav__dot {
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: currentColor;
+  flex-shrink: 0;
+  transition: width .2s ease, height .2s ease;
+}
+.section-nav__label {
+  display: inline-block;
+}
+.section-nav__item.is-active {
+  background: var(--ink);
+  color: var(--white);
+}
+.section-nav__item.is-active .section-nav__dot {
+  background: var(--white);
+}
+
+@media (max-width: 1100px) {
+  .section-nav { display: none; }
 }
 
 /* ============ SUB-PAGE HERO (5th / team / gallery) ============ */

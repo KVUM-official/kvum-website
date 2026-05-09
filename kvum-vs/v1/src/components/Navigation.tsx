@@ -8,19 +8,14 @@ import Image from 'next/image';
 
 const LOCALE_LABELS: Record<string, string> = { ko: 'KO', en: 'EN', ja: 'JA' };
 
-type AnchorItem = { kind: 'anchor'; id: string; label: string };
-type PageItem   = { kind: 'page'; href: '/5th' | '/gallery' | '/team'; label: string };
+type PageItem = { kind: 'page'; href: '/5th' | '/gallery' | '/team'; label: string };
 type ExternalItem = { kind: 'external'; href: string; label: string };
-type NavItem = AnchorItem | PageItem | ExternalItem;
+type NavItem = PageItem | ExternalItem;
 
-// English-only labels (intentionally locale-agnostic for visual consistency)
 const NAV_ITEMS: NavItem[] = [
-  { kind: 'anchor', id: 'kvum',    label: 'About' },
-  { kind: 'anchor', id: 'values',  label: 'Values' },
-  { kind: 'anchor', id: 'history', label: 'History' },
-  { kind: 'page',   href: '/5th',     label: '5th KVUM' },
-  { kind: 'page',   href: '/gallery', label: 'Gallery' },
-  { kind: 'page',   href: '/team',    label: 'Team' },
+  { kind: 'page',     href: '/5th',     label: '5th KVUM' },
+  { kind: 'page',     href: '/gallery', label: 'Gallery' },
+  { kind: 'page',     href: '/team',    label: 'Team' },
   { kind: 'external', href: 'https://blog.naver.com/vr_insight', label: 'VR Insight' },
 ];
 
@@ -38,67 +33,11 @@ export function Navigation() {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  // Close mobile menu when route changes
   useEffect(() => {
     setMenuOpen(false);
   }, [pathname]);
 
   const switchLocale = (next: Locale) => router.replace(pathname, { locale: next });
-
-  const isHome = pathname === '/';
-
-  const handleAnchorClick = (e: React.MouseEvent, id: string) => {
-    setMenuOpen(false);
-    if (!isHome) return; // Let Link navigate to /{locale}#id
-    e.preventDefault();
-    const el = document.getElementById(id);
-    if (!el) return;
-    const top = el.getBoundingClientRect().top + window.scrollY - 80;
-    window.scrollTo({ top, behavior: 'smooth' });
-    history.pushState(null, '', `#${id}`);
-  };
-
-  const renderItem = (item: NavItem, idx: number, prevKind?: NavItem['kind']) => {
-    const showSeparator = !!prevKind && prevKind !== item.kind &&
-      ((prevKind === 'anchor' && item.kind === 'page') ||
-       (prevKind === 'page' && item.kind === 'external'));
-
-    const liClass = showSeparator ? 'nav__sep-before' : '';
-
-    if (item.kind === 'anchor') {
-      return (
-        <li key={`a-${item.id}`} className={liClass}>
-          <Link
-            href={{ pathname: '/', hash: item.id }}
-            onClick={e => handleAnchorClick(e, item.id)}
-          >
-            {item.label}
-          </Link>
-        </li>
-      );
-    }
-    if (item.kind === 'page') {
-      const active = pathname === item.href;
-      return (
-        <li key={`p-${item.href}`} className={liClass}>
-          <Link
-            href={item.href}
-            className={active ? 'is-active' : ''}
-            onClick={() => setMenuOpen(false)}
-          >
-            {item.label}
-          </Link>
-        </li>
-      );
-    }
-    return (
-      <li key={`e-${idx}`} className={liClass}>
-        <a href={item.href} target="_blank" rel="noopener" onClick={() => setMenuOpen(false)}>
-          {item.label}<span className="ext">↗</span>
-        </a>
-      </li>
-    );
-  };
 
   return (
     <nav className={`nav${scrolled ? ' is-scrolled' : ''}`} id="nav">
@@ -115,9 +54,29 @@ export function Navigation() {
         </Link>
 
         <ul className={`nav__menu${menuOpen ? ' nav__menu--open' : ''}`}>
-          {NAV_ITEMS.map((item, idx) =>
-            renderItem(item, idx, idx > 0 ? NAV_ITEMS[idx - 1].kind : undefined),
-          )}
+          {NAV_ITEMS.map((item, idx) => {
+            if (item.kind === 'page') {
+              const active = pathname === item.href;
+              return (
+                <li key={`p-${item.href}`}>
+                  <Link
+                    href={item.href}
+                    className={active ? 'is-active' : ''}
+                    onClick={() => setMenuOpen(false)}
+                  >
+                    {item.label}
+                  </Link>
+                </li>
+              );
+            }
+            return (
+              <li key={`e-${idx}`}>
+                <a href={item.href} target="_blank" rel="noopener" onClick={() => setMenuOpen(false)}>
+                  {item.label}<span className="ext">↗</span>
+                </a>
+              </li>
+            );
+          })}
 
           {menuOpen && (
             <li className="nav__lang nav__lang--mobile">

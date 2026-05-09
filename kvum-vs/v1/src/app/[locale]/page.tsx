@@ -5,10 +5,12 @@ import { ValueSection } from '@/components/ValueSection';
 import { EventsSection } from '@/components/EventsSection';
 import { PartnersSection } from '@/components/PartnersSection';
 import { CTASection } from '@/components/CTASection';
+import { SectionNav } from '@/components/SectionNav';
 
 export default function HomePage() {
   return (
     <>
+      <SectionNav />
       <Hero />
       <LogoTicker />
       <AboutSection />
