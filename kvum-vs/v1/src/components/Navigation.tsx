@@ -13,35 +13,16 @@ type PageItem   = { kind: 'page'; href: '/5th' | '/gallery' | '/team'; label: st
 type ExternalItem = { kind: 'external'; href: string; label: string };
 type NavItem = AnchorItem | PageItem | ExternalItem;
 
-const NAV_ITEMS: Record<string, NavItem[]> = {
-  ko: [
-    { kind: 'anchor', id: 'kvum',    label: 'KVUM이란?' },
-    { kind: 'anchor', id: 'values',  label: '네 가지 가치' },
-    { kind: 'anchor', id: 'history', label: 'KVUM 히스토리' },
-    { kind: 'page',   href: '/5th',     label: '5th KVUM' },
-    { kind: 'page',   href: '/gallery', label: 'Gallery' },
-    { kind: 'page',   href: '/team',    label: 'KVUM Team' },
-    { kind: 'external', href: 'https://blog.naver.com/vr_insight', label: 'VR Insight' },
-  ],
-  en: [
-    { kind: 'anchor', id: 'kvum',    label: 'About KVUM' },
-    { kind: 'anchor', id: 'values',  label: 'Four Values' },
-    { kind: 'anchor', id: 'history', label: 'History' },
-    { kind: 'page',   href: '/5th',     label: '5th KVUM' },
-    { kind: 'page',   href: '/gallery', label: 'Gallery' },
-    { kind: 'page',   href: '/team',    label: 'KVUM Team' },
-    { kind: 'external', href: 'https://blog.naver.com/vr_insight', label: 'VR Insight' },
-  ],
-  ja: [
-    { kind: 'anchor', id: 'kvum',    label: 'KVUMとは？' },
-    { kind: 'anchor', id: 'values',  label: '四つの価値' },
-    { kind: 'anchor', id: 'history', label: 'ヒストリー' },
-    { kind: 'page',   href: '/5th',     label: '第5回 KVUM' },
-    { kind: 'page',   href: '/gallery', label: 'ギャラリー' },
-    { kind: 'page',   href: '/team',    label: 'KVUM チーム' },
-    { kind: 'external', href: 'https://blog.naver.com/vr_insight', label: 'VR Insight' },
-  ],
-};
+// English-only labels (intentionally locale-agnostic for visual consistency)
+const NAV_ITEMS: NavItem[] = [
+  { kind: 'anchor', id: 'kvum',    label: 'About' },
+  { kind: 'anchor', id: 'values',  label: 'Values' },
+  { kind: 'anchor', id: 'history', label: 'History' },
+  { kind: 'page',   href: '/5th',     label: '5th KVUM' },
+  { kind: 'page',   href: '/gallery', label: 'Gallery' },
+  { kind: 'page',   href: '/team',    label: 'Team' },
+  { kind: 'external', href: 'https://blog.naver.com/vr_insight', label: 'VR Insight' },
+];
 
 export function Navigation() {
   const locale = useLocale() as Locale;
@@ -57,9 +38,13 @@ export function Navigation() {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
+  // Close mobile menu when route changes
+  useEffect(() => {
+    setMenuOpen(false);
+  }, [pathname]);
+
   const switchLocale = (next: Locale) => router.replace(pathname, { locale: next });
 
-  const items = NAV_ITEMS[locale] ?? NAV_ITEMS.ko;
   const isHome = pathname === '/';
 
   const handleAnchorClick = (e: React.MouseEvent, id: string) => {
@@ -74,8 +59,9 @@ export function Navigation() {
   };
 
   const renderItem = (item: NavItem, idx: number, prevKind?: NavItem['kind']) => {
-    const showSeparator = prevKind && prevKind !== item.kind &&
-      (prevKind === 'anchor' && item.kind === 'page' || prevKind === 'page' && item.kind === 'external');
+    const showSeparator = !!prevKind && prevKind !== item.kind &&
+      ((prevKind === 'anchor' && item.kind === 'page') ||
+       (prevKind === 'page' && item.kind === 'external'));
 
     const liClass = showSeparator ? 'nav__sep-before' : '';
 
@@ -129,14 +115,14 @@ export function Navigation() {
         </Link>
 
         <ul className={`nav__menu${menuOpen ? ' nav__menu--open' : ''}`}>
-          {items.map((item, idx) =>
-            renderItem(item, idx, idx > 0 ? items[idx - 1].kind : undefined),
+          {NAV_ITEMS.map((item, idx) =>
+            renderItem(item, idx, idx > 0 ? NAV_ITEMS[idx - 1].kind : undefined),
           )}
 
           {menuOpen && (
             <li className="nav__lang nav__lang--mobile">
               {routing.locales.map((loc, i) => (
-                <span key={loc} style={{ display: 'inline-flex', alignItems: 'center', gap: 6 }}>
+                <span key={loc} className="lang-group">
                   {i > 0 && <span className="lang-sep" />}
                   <button
                     className={`lang-btn${locale === loc ? ' is-active' : ''}`}
@@ -152,7 +138,7 @@ export function Navigation() {
 
         <div className="nav__lang">
           {routing.locales.map((loc, i) => (
-            <span key={loc} style={{ display: 'inline-flex', alignItems: 'center', gap: 6 }}>
+            <span key={loc} className="lang-group">
               {i > 0 && <span className="lang-sep" />}
               <button
                 className={`lang-btn${locale === loc ? ' is-active' : ''}`}
@@ -167,6 +153,7 @@ export function Navigation() {
         <button
           className="nav__toggle"
           aria-label="menu"
+          aria-expanded={menuOpen}
           onClick={() => setMenuOpen(v => !v)}
         >
           <span /><span /><span />

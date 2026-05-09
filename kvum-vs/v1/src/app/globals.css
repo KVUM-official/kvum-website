@@ -44,7 +44,7 @@
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; scroll-padding-top: 90px; }
 body {
   font-family: var(--font-body);
   background: var(--bg);
@@ -78,16 +78,20 @@ ul  { list-style: none; }
 .nav {
   position: fixed; inset: 0 0 auto 0;
   z-index: 100;
-  background: rgba(255, 255, 255, 0.75);
-  backdrop-filter: saturate(180%) blur(24px);
-  -webkit-backdrop-filter: saturate(180%) blur(24px);
+  background: rgba(255, 255, 255, 0.40);
+  backdrop-filter: saturate(140%) blur(8px);
+  -webkit-backdrop-filter: saturate(140%) blur(8px);
   border-bottom: 1px solid transparent;
-  transition: border-color .3s ease, background .3s ease;
+  transition: border-color .3s ease, background .3s ease, backdrop-filter .3s ease;
 }
 .nav.is-scrolled {
   border-bottom-color: var(--line);
   background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: saturate(180%) blur(24px);
+  -webkit-backdrop-filter: saturate(180%) blur(24px);
+  box-shadow: 0 2px 12px rgba(10, 10, 20, 0.04);
 }
+.lang-group { display: inline-flex; align-items: center; gap: 6px; }
 .nav__inner {
   max-width: 1240px; margin: 0 auto; padding: 18px 40px;
   display: flex; align-items: center; justify-content: space-between;
@@ -345,7 +349,7 @@ ul  { list-style: none; }
   80%      { transform: translate(50vw, 30vh)   scale(1.08); }
 }
 
-.nav, .hero, .section, .ticker, .footer { position: relative; z-index: 1; }
+.hero, .section, .ticker, .footer { position: relative; z-index: 1; }
 .ticker, .section--values, .section--programs, .footer { z-index: 1; }
 .hero { background: transparent; }
 .section--about    { background: rgba(255, 255, 255, 0.62); }
@@ -1141,6 +1145,19 @@ ul  { list-style: none; }
   border-left: none !important;
   border-top: 1px solid var(--line);
   padding-top: 12px !important;
+  margin-top: 6px;
+}
+/* On mobile, the menu stacks vertically — the vertical separator
+   becomes a horizontal divider above the page-group items */
+@media (max-width: 900px) {
+  .nav__menu .nav__sep-before {
+    padding-left: 0;
+    margin-left: 0;
+    margin-top: 8px;
+    padding-top: 16px;
+    border-top: 1px solid var(--line);
+  }
+  .nav__menu .nav__sep-before::before { display: none; }
 }
 
 /* ============ SUB-PAGE HERO (5th / team / gallery) ============ */
