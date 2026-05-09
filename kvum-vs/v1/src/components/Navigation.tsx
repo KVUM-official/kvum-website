@@ -2,20 +2,45 @@
 
 import { useEffect, useState } from 'react';
 import { useLocale } from 'next-intl';
-import { useRouter, usePathname } from '@/i18n/navigation';
+import { Link, useRouter, usePathname } from '@/i18n/navigation';
 import { routing, type Locale } from '@/i18n/routing';
 import Image from 'next/image';
 
 const LOCALE_LABELS: Record<string, string> = { ko: 'KO', en: 'EN', ja: 'JA' };
 
-const NAV_ITEMS_KO = ['홈', '5th KVUM', 'KVUM Team', 'Gallery', 'VR Insight'];
-const NAV_ITEMS_EN = ['Home', '5th KVUM', 'KVUM Team', 'Gallery', 'VR Insight'];
-const NAV_ITEMS_JA = ['ホーム', '第5回 KVUM', 'KVUM チーム', 'ギャラリー', 'VR Insight'];
+type AnchorItem = { kind: 'anchor'; id: string; label: string };
+type PageItem   = { kind: 'page'; href: '/5th' | '/gallery' | '/team'; label: string };
+type ExternalItem = { kind: 'external'; href: string; label: string };
+type NavItem = AnchorItem | PageItem | ExternalItem;
 
-const NAV_LABELS: Record<string, string[]> = {
-  ko: NAV_ITEMS_KO,
-  en: NAV_ITEMS_EN,
-  ja: NAV_ITEMS_JA,
+const NAV_ITEMS: Record<string, NavItem[]> = {
+  ko: [
+    { kind: 'anchor', id: 'kvum',    label: 'KVUM이란?' },
+    { kind: 'anchor', id: 'values',  label: '네 가지 가치' },
+    { kind: 'anchor', id: 'history', label: 'KVUM 히스토리' },
+    { kind: 'page',   href: '/5th',     label: '5th KVUM' },
+    { kind: 'page',   href: '/gallery', label: 'Gallery' },
+    { kind: 'page',   href: '/team',    label: 'KVUM Team' },
+    { kind: 'external', href: 'https://blog.naver.com/vr_insight', label: 'VR Insight' },
+  ],
+  en: [
+    { kind: 'anchor', id: 'kvum',    label: 'About KVUM' },
+    { kind: 'anchor', id: 'values',  label: 'Four Values' },
+    { kind: 'anchor', id: 'history', label: 'History' },
+    { kind: 'page',   href: '/5th',     label: '5th KVUM' },
+    { kind: 'page',   href: '/gallery', label: 'Gallery' },
+    { kind: 'page',   href: '/team',    label: 'KVUM Team' },
+    { kind: 'external', href: 'https://blog.naver.com/vr_insight', label: 'VR Insight' },
+  ],
+  ja: [
+    { kind: 'anchor', id: 'kvum',    label: 'KVUMとは？' },
+    { kind: 'anchor', id: 'values',  label: '四つの価値' },
+    { kind: 'anchor', id: 'history', label: 'ヒストリー' },
+    { kind: 'page',   href: '/5th',     label: '第5回 KVUM' },
+    { kind: 'page',   href: '/gallery', label: 'ギャラリー' },
+    { kind: 'page',   href: '/team',    label: 'KVUM チーム' },
+    { kind: 'external', href: 'https://blog.naver.com/vr_insight', label: 'VR Insight' },
+  ],
 };
 
 export function Navigation() {
@@ -34,22 +59,65 @@ export function Navigation() {
 
   const switchLocale = (next: Locale) => router.replace(pathname, { locale: next });
 
-  const labels = NAV_LABELS[locale] ?? NAV_LABELS.ko;
+  const items = NAV_ITEMS[locale] ?? NAV_ITEMS.ko;
+  const isHome = pathname === '/';
 
-  const scrollTo = (id: string) => {
+  const handleAnchorClick = (e: React.MouseEvent, id: string) => {
+    setMenuOpen(false);
+    if (!isHome) return; // Let Link navigate to /{locale}#id
+    e.preventDefault();
     const el = document.getElementById(id);
     if (!el) return;
     const top = el.getBoundingClientRect().top + window.scrollY - 80;
     window.scrollTo({ top, behavior: 'smooth' });
-    setMenuOpen(false);
+    history.pushState(null, '', `#${id}`);
   };
 
-  const sectionIds = ['top', 'next-event', 'about', 'history', 'partners', 'programs', 'join'];
+  const renderItem = (item: NavItem, idx: number, prevKind?: NavItem['kind']) => {
+    const showSeparator = prevKind && prevKind !== item.kind &&
+      (prevKind === 'anchor' && item.kind === 'page' || prevKind === 'page' && item.kind === 'external');
+
+    const liClass = showSeparator ? 'nav__sep-before' : '';
+
+    if (item.kind === 'anchor') {
+      return (
+        <li key={`a-${item.id}`} className={liClass}>
+          <Link
+            href={{ pathname: '/', hash: item.id }}
+            onClick={e => handleAnchorClick(e, item.id)}
+          >
+            {item.label}
+          </Link>
+        </li>
+      );
+    }
+    if (item.kind === 'page') {
+      const active = pathname === item.href;
+      return (
+        <li key={`p-${item.href}`} className={liClass}>
+          <Link
+            href={item.href}
+            className={active ? 'is-active' : ''}
+            onClick={() => setMenuOpen(false)}
+          >
+            {item.label}
+          </Link>
+        </li>
+      );
+    }
+    return (
+      <li key={`e-${idx}`} className={liClass}>
+        <a href={item.href} target="_blank" rel="noopener" onClick={() => setMenuOpen(false)}>
+          {item.label}<span className="ext">↗</span>
+        </a>
+      </li>
+    );
+  };
 
   return (
     <nav className={`nav${scrolled ? ' is-scrolled' : ''}`} id="nav">
       <div className="nav__inner">
-        <a href="#top" className="nav__brand" aria-label="KVUM 홈" onClick={e => { e.preventDefault(); scrollTo('top'); }}>
+        <Link href="/" className="nav__brand" aria-label="KVUM" onClick={() => setMenuOpen(false)}>
           <Image
             src="/images/brand/kvum_logo_simple.png"
             alt="KVUM"
@@ -58,20 +126,15 @@ export function Navigation() {
             height={26}
             priority
           />
-        </a>
+        </Link>
 
         <ul className={`nav__menu${menuOpen ? ' nav__menu--open' : ''}`}>
-          <li><a href="#top" className="is-active" onClick={e => { e.preventDefault(); scrollTo('top'); }}>{labels[0]}</a></li>
-          <li><a href="#join" onClick={e => { e.preventDefault(); scrollTo('join'); }}>{labels[1]}</a></li>
-          <li><a href="#about" onClick={e => { e.preventDefault(); scrollTo('about'); }}>{labels[2]}</a></li>
-          <li><a href="#history" onClick={e => { e.preventDefault(); scrollTo('history'); }}>{labels[3]}</a></li>
-          <li>
-            <a href="https://blog.naver.com/vr_insight" target="_blank" rel="noopener">
-              {labels[4]}<span className="ext">↗</span>
-            </a>
-          </li>
+          {items.map((item, idx) =>
+            renderItem(item, idx, idx > 0 ? items[idx - 1].kind : undefined),
+          )}
+
           {menuOpen && (
-            <li className="nav__lang" style={{ paddingLeft: 0, borderLeft: 'none', borderTop: '1px solid var(--line)', paddingTop: 12 }}>
+            <li className="nav__lang nav__lang--mobile">
               {routing.locales.map((loc, i) => (
                 <span key={loc} style={{ display: 'inline-flex', alignItems: 'center', gap: 6 }}>
                   {i > 0 && <span className="lang-sep" />}

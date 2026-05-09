@@ -1,29 +1,45 @@
 'use client';
 
 import { useLocale } from 'next-intl';
+import { Link, usePathname } from '@/i18n/navigation';
 import Image from 'next/image';
 
-const NAV_LINKS: Record<string, Array<{ label: string; href: string; external?: boolean }>> = {
+type FooterLink =
+  | { kind: 'home'; label: string }
+  | { kind: 'anchor'; id: string; label: string }
+  | { kind: 'page'; href: '/5th' | '/gallery' | '/team'; label: string }
+  | { kind: 'external'; href: string; label: string };
+
+const NAV_LINKS: Record<string, FooterLink[]> = {
   ko: [
-    { label: '홈', href: '#top' },
-    { label: '5th KVUM', href: '#join' },
-    { label: 'KVUM Team', href: '#about' },
-    { label: 'Gallery', href: '#history' },
-    { label: 'VR Insight ↗', href: 'https://blog.naver.com/vr_insight', external: true },
+    { kind: 'home', label: '홈' },
+    { kind: 'anchor', id: 'kvum',    label: 'KVUM이란?' },
+    { kind: 'anchor', id: 'values',  label: '네 가지 가치' },
+    { kind: 'anchor', id: 'history', label: 'KVUM 히스토리' },
+    { kind: 'page', href: '/5th',     label: '5th KVUM' },
+    { kind: 'page', href: '/gallery', label: 'Gallery' },
+    { kind: 'page', href: '/team',    label: 'KVUM Team' },
+    { kind: 'external', href: 'https://blog.naver.com/vr_insight', label: 'VR Insight ↗' },
   ],
   en: [
-    { label: 'Home', href: '#top' },
-    { label: '5th KVUM', href: '#join' },
-    { label: 'KVUM Team', href: '#about' },
-    { label: 'Gallery', href: '#history' },
-    { label: 'VR Insight ↗', href: 'https://blog.naver.com/vr_insight', external: true },
+    { kind: 'home', label: 'Home' },
+    { kind: 'anchor', id: 'kvum',    label: 'About KVUM' },
+    { kind: 'anchor', id: 'values',  label: 'Four Values' },
+    { kind: 'anchor', id: 'history', label: 'History' },
+    { kind: 'page', href: '/5th',     label: '5th KVUM' },
+    { kind: 'page', href: '/gallery', label: 'Gallery' },
+    { kind: 'page', href: '/team',    label: 'KVUM Team' },
+    { kind: 'external', href: 'https://blog.naver.com/vr_insight', label: 'VR Insight ↗' },
   ],
   ja: [
-    { label: 'ホーム', href: '#top' },
-    { label: '第5回 KVUM', href: '#join' },
-    { label: 'KVUM チーム', href: '#about' },
-    { label: 'ギャラリー', href: '#history' },
-    { label: 'VR Insight ↗', href: 'https://blog.naver.com/vr_insight', external: true },
+    { kind: 'home', label: 'ホーム' },
+    { kind: 'anchor', id: 'kvum',    label: 'KVUMとは？' },
+    { kind: 'anchor', id: 'values',  label: '四つの価値' },
+    { kind: 'anchor', id: 'history', label: 'ヒストリー' },
+    { kind: 'page', href: '/5th',     label: '第5回 KVUM' },
+    { kind: 'page', href: '/gallery', label: 'ギャラリー' },
+    { kind: 'page', href: '/team',    label: 'KVUM チーム' },
+    { kind: 'external', href: 'https://blog.naver.com/vr_insight', label: 'VR Insight ↗' },
   ],
 };
 
@@ -33,17 +49,19 @@ const FOOTER_DESC: Record<string, React.ReactNode> = {
   ja: <>韓国最大規模の XR ユーザーミートアップ。<br />ユーザー · 開発者 · 企業が集う場所。<br />2024年から今まで、そしてこれからも。</>,
 };
 
-const CONTACT_LABEL: Record<string, string> = { ko: '참가 신청', en: 'Join 5th KVUM', ja: '参加申込' };
-
 export function Footer() {
   const locale = useLocale();
+  const pathname = usePathname();
   const links = NAV_LINKS[locale] ?? NAV_LINKS.ko;
+  const isHome = pathname === '/';
 
-  const scrollTo = (id: string) => {
-    const hash = id.startsWith('#') ? id.slice(1) : id;
-    const el = document.getElementById(hash);
+  const handleAnchorClick = (e: React.MouseEvent, id: string) => {
+    if (!isHome) return;
+    e.preventDefault();
+    const el = document.getElementById(id);
     if (!el) return;
     window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 80, behavior: 'smooth' });
+    history.pushState(null, '', `#${id}`);
   };
 
   return (
@@ -66,17 +84,31 @@ export function Footer() {
           <div>
             <div className="footer__col-title">Navigate</div>
             <ul className="footer__col-list">
-              {links.map(link => (
-                <li key={link.label}>
-                  {link.external ? (
+              {links.map((link, i) => {
+                if (link.kind === 'home') {
+                  return <li key={`h-${i}`}><Link href="/">{link.label}</Link></li>;
+                }
+                if (link.kind === 'anchor') {
+                  return (
+                    <li key={`a-${link.id}`}>
+                      <Link
+                        href={{ pathname: '/', hash: link.id }}
+                        onClick={e => handleAnchorClick(e, link.id)}
+                      >
+                        {link.label}
+                      </Link>
+                    </li>
+                  );
+                }
+                if (link.kind === 'page') {
+                  return <li key={`p-${link.href}`}><Link href={link.href}>{link.label}</Link></li>;
+                }
+                return (
+                  <li key={`e-${i}`}>
                     <a href={link.href} target="_blank" rel="noopener">{link.label}</a>
-                  ) : (
-                    <a href={link.href} onClick={e => { e.preventDefault(); scrollTo(link.href); }}>
-                      {link.label}
-                    </a>
-                  )}
-                </li>
-              ))}
+                  </li>
+                );
+              })}
             </ul>
           </div>
 
@@ -93,11 +125,6 @@ export function Footer() {
             <div className="footer__col-title">Contact</div>
             <ul className="footer__col-list">
               <li><a href="mailto:future1070@naver.com">future1070@naver.com</a></li>
-              <li>
-                <a href="#join" onClick={e => { e.preventDefault(); scrollTo('join'); }}>
-                  {CONTACT_LABEL[locale] ?? CONTACT_LABEL.ko}
-                </a>
-              </li>
             </ul>
           </div>
         </div>

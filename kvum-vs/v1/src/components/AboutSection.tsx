@@ -75,7 +75,7 @@ export function AboutSection() {
   const c = CONTENT[locale] ?? CONTENT.ko;
 
   return (
-    <section className="section section--about" id="about">
+    <section className="section section--about" id="kvum">
       <div className="container">
         <div className="section__label">
           <span className="label__dot" />

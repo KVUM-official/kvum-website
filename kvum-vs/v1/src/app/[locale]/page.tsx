@@ -5,7 +5,6 @@ import { ValueSection } from '@/components/ValueSection';
 import { EventsSection } from '@/components/EventsSection';
 import { PartnersSection } from '@/components/PartnersSection';
 import { CTASection } from '@/components/CTASection';
-import { Footer } from '@/components/Footer';
 
 export default function HomePage() {
   return (
@@ -17,7 +16,6 @@ export default function HomePage() {
       <EventsSection />
       <PartnersSection />
       <CTASection />
-      <Footer />
     </>
   );
 }

@@ -114,5 +114,29 @@
     "representative": "KVUM | VR Insight · CEO Kim Junghyun",
     "email_label": "Email",
     "openchat_label": "KakaoTalk Open Chat"
+  },
+  "Page5th": {
+    "hero_label": "5th KVUM · Coming Soon",
+    "hero_title": "It returns — the fifth KVUM.",
+    "hero_sub": "On October 3, 2026, Korea's XR users, developers, and companies gather again.",
+    "overview_note": "* All schedules and details are subject to change. Final details will be announced before registration opens.",
+    "expect_label": "What to Expect",
+    "tuned_badge": "STAY TUNED"
+  },
+  "PageTeam": {
+    "hero_label": "KVUM Team",
+    "hero_title": "The people behind KVUM.",
+    "hero_sub": "A team building a platform where Korea's XR users can connect and exchange information actively.",
+    "staff_title": "Staff",
+    "staff_desc": "Beyond the operations team, KVUM is made possible by staff who join us on-site.",
+    "cta_label": "Join KVUM",
+    "cta_title": "We're looking for people to join us.",
+    "cta_desc": "If you want to help grow the XR community or are interested in event operations, reach out anytime."
+  },
+  "PageGallery": {
+    "hero_label": "Gallery",
+    "hero_title": "Moments from KVUM.",
+    "hero_sub": "From the 1st to the 4th — starting in a party room and growing to a 250-pyeong exhibition hall.",
+    "footnote": "* Photos from the 1st/2nd/3rd events are partially uploaded. More will be added gradually."
   }
 }

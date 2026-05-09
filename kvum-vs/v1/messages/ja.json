@@ -114,5 +114,29 @@
     "representative": "KVUM | VR Insight · 代表 キム・ジョンヒョン",
     "email_label": "メール",
     "openchat_label": "カカオオープンチャット"
+  },
+  "Page5th": {
+    "hero_label": "5th KVUM · Coming Soon",
+    "hero_title": "再び帰ってきます、第5回 KVUM。",
+    "hero_sub": "2026年10月3日、韓国の XR ユーザー · 開発者 · 企業が再び一堂に集います。",
+    "overview_note": "* 日程と詳細は変更される可能性があり、最終確定内容は募集開始前にお知らせします。",
+    "expect_label": "What to Expect",
+    "tuned_badge": "STAY TUNED"
+  },
+  "PageTeam": {
+    "hero_label": "KVUM Team",
+    "hero_title": "KVUM を作る人々。",
+    "hero_sub": "韓国の XR ユーザーが中心となって交流と情報交換を活発に行えるプラットフォームを作るチーム。",
+    "staff_title": "Staff",
+    "staff_desc": "KVUM は運営チームだけでなく、現場で共にしてくださるスタッフの皆さんの手で作られています。",
+    "cta_label": "Join KVUM",
+    "cta_title": "一緒に活動してくれる方を探しています。",
+    "cta_desc": "XR コミュニティを共に育てたい方、イベント運営に興味のある方は、いつでもご連絡ください。"
+  },
+  "PageGallery": {
+    "hero_label": "Gallery",
+    "hero_title": "KVUM 現場の瞬間たち。",
+    "hero_sub": "第1回から第4回まで — パーティールームから250坪の展示場まで、KVUM が記録した XR コミュニティの軌跡。",
+    "footnote": "* 1/2/3回の写真は一部のみアップロードされています。追加写真は順次公開予定です。"
   }
 }
