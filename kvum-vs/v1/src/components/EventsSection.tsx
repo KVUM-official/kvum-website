@@ -57,6 +57,20 @@ const CARDS: Record<string, HistoryCard[]> = {
       title: '初の XR フェスティバル', desc: '文來展示場で開催された史上最大規模のミートアップ。企業・ユーザー・現職者をつなぐ真の XR フェスティバルの幕を開けました。',
       meta: <><span><strong>史上最大規模</strong></span><span>文來展示場</span></> },
   ],
+  zh: [
+    { tag: '1ST', date: '2024 · 03', imgSrc: '/images/photos/history-1st.jpg', imgAlt: '1st KVUM',
+      title: '首届 VR 用户聚会', desc: 'XR 社区用户与业界人士首次齐聚一堂，KVUM 的起点。',
+      meta: <><span><strong>首次启动</strong></span><span>派对房间规模</span></> },
+    { tag: '2ND', date: '2024 · 06', imgSrc: '/images/photos/history-2nd.jpg', imgAlt: '2nd KVUM',
+      title: '参与扩大', desc: '企业与机构参与正式扩展的第2届聚会。',
+      meta: <><span><strong>参与扩展</strong></span><span>企业开始参与</span></> },
+    { tag: '3RD', date: '2025 · 03', imgSrc: '/images/photos/history-3rd.jpg', imgAlt: '3rd KVUM',
+      title: '成长为韩国最大规模', desc: 'XR 企业 · 开发者 · 社区用户齐聚的韩国最大 XR 用户主导线下活动。',
+      meta: <><span><strong>用户为中心</strong></span><span>韩国最大 XR 聚会</span></> },
+    { tag: '4TH', date: '2025 · 10 · 03', imgSrc: '/images/photos/history-4th.jpg', imgAlt: '4th KVUM',
+      title: '首届 XR 节日', desc: '在文来展厅举行的史上最大规模聚会，开启了连接企业 · 用户 · 从业者的真正 XR 节日。',
+      meta: <><span><strong>史上最大规模</strong></span><span>文来展厅举办</span></> },
+  ],
 };
 
 const JOIN_CONTENT: Record<string, {
@@ -87,9 +101,16 @@ const JOIN_CONTENT: Record<string, {
     cta: '詳細ページへ',
     contactTitle: 'Get in touch',
   },
+  zh: {
+    heading: <><span className="grad">KVUM</span> 走过的路。</>,
+    badge: '5TH · COMING SOON',
+    title: <>2026. 10. 03<span>首尔 · 文来 · 报名即将开启</span></>,
+    cta: '查看详情页',
+    contactTitle: 'Get in touch',
+  },
 };
 
-const SECTION_LABELS: Record<string, string> = { ko: 'History', en: 'History', ja: 'History' };
+const SECTION_LABELS: Record<string, string> = { ko: 'History', en: 'History', ja: 'History', zh: 'History' };
 
 export function EventsSection() {
   const locale = useLocale();
@@ -108,6 +129,7 @@ export function EventsSection() {
           {locale === 'ko' && '파티룸에서 시작해 대형 전시장까지 — 규모와 영향력을 함께 키워온 네 번의 밋업, 그리고 앞으로.'}
           {locale === 'en' && 'From a party room to a full exhibition hall. Four meetups we\'ve grown through — and what\'s coming next.'}
           {locale === 'ja' && 'パーティルームから大型展示会場まで — 規模と影響力を共に拡大してきた4回のミートアップ、そしてこれから。'}
+          {locale === 'zh' && '从派对房间到大型展厅 —— 规模与影响力共同成长的四届聚会，以及未来。'}
         </p>
 
         <div className="history__grid">
@@ -152,8 +174,8 @@ export function EventsSection() {
                 </svg>
               </span>
               <span className="contact__text">
-                <strong>{locale === 'ko' ? '오픈 카카오톡' : locale === 'ja' ? 'オープンカカオトーク' : 'Open KakaoTalk'}</strong>
-                <small>{locale === 'ko' ? '참가 소식 · 실시간 공지' : locale === 'ja' ? 'お知らせ · リアルタイム案内' : 'Updates · live announcements'}</small>
+                <strong>{locale === 'ko' ? '오픈 카카오톡' : locale === 'ja' ? 'オープンカカオトーク' : locale === 'zh' ? 'Kakao 开放聊天' : 'Open KakaoTalk'}</strong>
+                <small>{locale === 'ko' ? '참가 소식 · 실시간 공지' : locale === 'ja' ? 'お知らせ · リアルタイム案内' : locale === 'zh' ? '活动消息 · 实时通知' : 'Updates · live announcements'}</small>
               </span>
               <span className="contact__arrow">→</span>
             </a>
@@ -166,7 +188,7 @@ export function EventsSection() {
               </span>
               <span className="contact__text">
                 <strong>future1070@naver.com</strong>
-                <small>{locale === 'ko' ? '파트너십 · 일반 문의' : locale === 'ja' ? 'パートナーシップ · 一般お問い合わせ' : 'Partnerships · general inquiries'}</small>
+                <small>{locale === 'ko' ? '파트너십 · 일반 문의' : locale === 'ja' ? 'パートナーシップ · 一般お問い合わせ' : locale === 'zh' ? '合作 · 一般咨询' : 'Partnerships · general inquiries'}</small>
               </span>
               <span className="contact__arrow">→</span>
             </a>
@@ -178,7 +200,7 @@ export function EventsSection() {
               </span>
               <span className="contact__text">
                 <strong>@vum_k67455</strong>
-                <small>{locale === 'ko' ? '공식 X (트위터)' : locale === 'ja' ? '公式 X (Twitter)' : 'Official X (Twitter)'}</small>
+                <small>{locale === 'ko' ? '공식 X (트위터)' : locale === 'ja' ? '公式 X (Twitter)' : locale === 'zh' ? '官方 X (Twitter)' : 'Official X (Twitter)'}</small>
               </span>
               <span className="contact__arrow">→</span>
             </a>
@@ -190,7 +212,7 @@ export function EventsSection() {
               </span>
               <span className="contact__text">
                 <strong>{locale === 'ko' ? 'VR 인사이트' : 'VR Insight'}</strong>
-                <small>{locale === 'ko' ? '네이버 블로그' : locale === 'ja' ? 'Naver ブログ' : 'Naver Blog'}</small>
+                <small>{locale === 'ko' ? '네이버 블로그' : locale === 'ja' ? 'Naver ブログ' : locale === 'zh' ? 'Naver 博客' : 'Naver Blog'}</small>
               </span>
               <span className="contact__arrow">→</span>
             </a>

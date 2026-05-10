@@ -69,6 +69,25 @@ const HERO_CONTENT: Record<string, {
     ),
     cta: '第5回 KVUM に参加する',
   },
+  zh: {
+    markLabel: '下次聚会',
+    markLoc: '首尔 · 文来',
+    title: (
+      <>
+        <span className="word">体验、</span>
+        <span className="word">连接、</span>
+        <br />
+        <span className="word">共同打造的</span>{' '}
+        <span className="word grad">XR 运动。</span>
+      </>
+    ),
+    sub: (
+      <>
+        KVUM 是韩国 XR 用户、开发者与业界人士齐聚一堂的 <strong>韩国最大规模 XR 用户聚会</strong>。
+      </>
+    ),
+    cta: '了解第5届 KVUM',
+  },
 };
 
 export function Hero() {

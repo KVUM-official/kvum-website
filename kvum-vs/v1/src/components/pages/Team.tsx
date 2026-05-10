@@ -130,6 +130,41 @@ const CONTENT: Record<string, Content> = {
     ctaTitle: '一緒に活動してくれる方を探しています。',
     ctaDesc: 'XR コミュニティを共に育てたい方、イベント運営に興味のある方は、いつでもご連絡ください。',
   },
+  zh: {
+    heroLabel: 'KVUM Team',
+    heroTitle: <>打造 KVUM 的<br /><span className="grad">人们。</span></>,
+    heroSub: '致力于让韩国 XR 用户成为主体，活跃进行交流与信息分享的平台团队。来自不同背景的专家凭借各自的经验引领 KVUM。',
+    members: [
+      {
+        img: '/images/common/team/team-kimjunghyun.png',
+        role: 'Lead',
+        name: '金正贤', alias: 'JJum',
+        bio: <>KVUM 主办人兼 VR Insight 博客运营者。<br />致力于打造连接韩国 XR 市场与用户的平台。统筹活动策划 · 合作伙伴关系 · 整体运营。</>,
+        links: [
+          { href: 'https://blog.naver.com/vr_insight', label: 'Blog', external: true },
+          { href: 'mailto:future1070@naver.com', label: 'Email' },
+        ],
+        lead: true,
+      },
+      {
+        img: '/images/common/team/team-noyunkyung.png',
+        role: 'Designer',
+        name: '卢润景', alias: 'Soontan',
+        bio: '负责 KVUM 品牌设计与视觉识别。负责活动视觉与内容制作。',
+      },
+      {
+        img: '/images/common/team/team-kwonkihyun.png',
+        role: 'Sales',
+        name: '权基贤', alias: 'Kwon-bbaem',
+        bio: '负责 KVUM 的合作伙伴与赞助事务，主导与企业、品牌的合作。',
+      },
+    ],
+    staffTitle: 'Staff',
+    staffDesc: '除运营团队外，KVUM 也由现场协助的工作人员共同打造。活动当日无数细小的瞬间皆得益于他们的付出。',
+    ctaLabel: 'Join KVUM',
+    ctaTitle: '我们在寻找同行的伙伴。',
+    ctaDesc: '如果您希望共同发展 XR 社区，或对活动运营感兴趣，欢迎随时联系。',
+  },
 };
 
 export function Team() {

@@ -83,22 +83,6 @@ export function CustomCursor() {
     <>
       <div ref={clusterRef} className="cursor-cluster" aria-hidden="true">
         <div className="cursor-dot" />
-        <svg
-          className="cursor-vr"
-          viewBox="0 0 18 9"
-          width="36"
-          height="18"
-          shapeRendering="crispEdges"
-        >
-          {/* black border (1px on all sides) */}
-          <rect x="0" y="0" width="18" height="9" fill="#000000" />
-          {/* white frame */}
-          <rect x="1" y="1" width="16" height="7" fill="#ffffff" />
-          {/* left lens */}
-          <rect x="3" y="3" width="5" height="3" fill="#00ccff" />
-          {/* right lens */}
-          <rect x="10" y="3" width="5" height="3" fill="#00ccff" />
-        </svg>
       </div>
       <div ref={ringRef} className="cursor-ring" aria-hidden="true" />
     </>

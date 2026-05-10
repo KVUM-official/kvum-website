@@ -115,6 +115,38 @@ const CONTENT: Record<string, Content> = {
       blog: 'VR インサイト', blogSub: 'ネイバーブログ',
     },
   },
+  zh: {
+    heroLabel: '5th KVUM · Coming Soon',
+    heroTitle: <>再次回归，<br /><span className="grad">第5届 KVUM。</span></>,
+    heroSub: '2026年10月3日，韩国 XR 用户 · 开发者 · 企业再次相聚一堂。我们以第4届聚会积累的经验与人脉为基础，正在筹备更广更深的 XR 节日。',
+    overviewItems: [
+      { dt: '日期', dd: '2026年10月3日' },
+      { dt: '地点', dd: '首尔 · 文来' },
+      { dt: '对象', dd: 'XR 用户 · 开发者 · 业界人士 · 内容创作者' },
+      { dt: '招募人数', dd: '稍后公布' },
+      { dt: '报名方式', dd: '通过社区 · SNS · 群聊公告' },
+      { dt: '参加费', dd: '稍后公布' },
+    ],
+    overviewNote: '* 所有日程与详细内容可能会有变动，最终确认内容将在报名开始前公布。',
+    overviewPlace: '首尔 · 文来',
+    expectLabel: 'What to Expect',
+    expectHeading: <>第5届 KVUM 的 <span className="grad">精彩内容</span></>,
+    expectCards: [
+      { num: '01', title: '扩展的 XR 设备体验区', desc: '从 HMD · 追踪器 · AR 眼镜到高端设备，平时难以接触的 XR 设备齐聚一堂，亲身体验。' },
+      { num: '02', title: '从业者洞察分享', desc: '国内外 XR 业界专家与企业人士的现场洞察，直接分享市场展望与开发经验。' },
+      { num: '03', title: '自由讨论 & 社交', desc: '用户 · 开发者 · 业界人士之间无界限的交流。提供翻译支持，与海外嘉宾畅谈无阻。' },
+      { num: '04', title: '抽奖 & 惊喜活动', desc: '与合作企业共同打造的抽奖活动。每届都以超乎想象的规模准备抽奖与惊喜。' },
+    ],
+    tunedBadge: 'STAY TUNED',
+    tunedTitle: <>第一时间<br /><span className="grad">获取活动信息。</span></>,
+    tunedDesc: '我们将通过开放聊天室与电子邮件，第一时间告知您日程、地点与报名开启时间。请勿错过。',
+    contactLabels: {
+      kakao: 'Kakao 开放聊天', kakaoSub: '活动消息 · 实时通知',
+      email: 'future1070@naver.com', emailSub: '合作 · 一般咨询',
+      x: '@vum_k67455', xSub: '官方 X (Twitter)',
+      blog: 'VR Insight', blogSub: 'Naver 博客',
+    },
+  },
 };
 
 export function Fifth() {

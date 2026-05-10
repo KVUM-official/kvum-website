@@ -68,6 +68,25 @@ const CONTENT: Record<string, {
       '2024年3月初開催 · 4回実施',
     ],
   },
+  zh: {
+    titleH2: <>什么是 <span className="grad">KVUM</span>？</>,
+    lead: (
+      <><span className="grad">KVUM</span> 是 <strong>Korea VR User Meetup</strong> 的缩写，
+      是以韩国 XR 用户为中心进行交流与信息共享的线下聚会。</>
+    ),
+    body1: (
+      <>自2024年3月首次聚会以来，用户 · 开发者 · 创业者 · XR 业界人士齐聚一堂，通过{' '}
+      <strong>设备体验</strong>、<strong>信息分享</strong> 与 <strong>业界趋势的多元交流</strong>共同成长。</>
+    ),
+    body2: '我们涵盖 VR · AR · MR 等 XR 全领域，致力于打造任何人都能参与的开放社区。构建韩国 XR 市场健康开放的生态体系是我们的目标。',
+    items: [
+      '韩国最大规模 XR 用户聚会',
+      'VR · AR · MR 全面覆盖',
+      '用户 · 开发者 · 企业线下交流',
+      '持续成长的社区',
+      '2024年3月首次举办 · 已成功举办4届',
+    ],
+  },
 };
 
 export function AboutSection() {

@@ -18,6 +18,10 @@ const CONTENT: Record<string, { title: React.ReactNode; lead: string }> = {
     title: <>共に作った<span className="grad">パートナーたち。</span></>,
     lead: '第4回 KVUM を共に作った XR 企業とコミュニティ。\nユーザー · 企業 · 現職者をつなぐ真の XR フェスティバルの主役たちです。',
   },
+  zh: {
+    title: <>共同打造的 <span className="grad">合作伙伴。</span></>,
+    lead: '与第4届 KVUM 共同打造的 XR 企业与社区。\n他们是连接用户 · 企业 · 从业者的真正 XR 节日的主角。',
+  },
 };
 
 export function PartnersSection() {

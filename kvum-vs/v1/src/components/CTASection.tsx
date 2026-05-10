@@ -35,18 +35,30 @@ const PROGRAMS: Record<string, ProgramItem[]> = {
     { cls: 'program--4', num: '04 — PRIZES', title: '景品 & サプライズイベント',
       desc: <>参加者と後援企業が共に楽しむイベント。第4回では <strong>PICO 4 Ultra</strong> · mutalk 2 · bHaptics スターターバンドル · AMVR セットなど <strong>多彩な景品抽選</strong>が行われました。</> },
   ],
+  zh: [
+    { cls: 'program--1', num: '01 — XR DEVICES', title: 'XR 设备体验区',
+      desc: <>参与者与企业带来的各类 HMD · 追踪器 · AR 眼镜均可 <strong>亲身体验</strong>。Quest · PICO · VIVE · Play For Dream · MeganeX · Bigscreen Beyond 等平时难得一见的高端设备齐聚一堂。</> },
+    { cls: 'program--2', num: '02 — SPEAKER SESSIONS', title: '嘉宾邀请分享',
+      desc: <>来自 XR 业界专家与企业人士的 <strong>现场洞察</strong>。SKT · Urban Wolf Games · HTC · Shiftall · Play For Dream 等国内外讲者分享市场展望与开发经验。</> },
+    { cls: 'program--3', num: '03 — NETWORKING', title: '自由讨论 & 社交',
+      desc: <>用户 · 开发者 · 业界人士间的 <strong>自由交流</strong>时间。一边体验设备，一边分享经验，并提供专业翻译，与海外嘉宾畅快交流。</> },
+    { cls: 'program--4', num: '04 — PRIZES', title: '抽奖 & 惊喜活动',
+      desc: <>参与者与赞助企业共同打造的活动。第4届的 <strong>PICO 4 Ultra</strong> · mutalk 2 · bHaptics 入门套装 · AMVR 套装 等 <strong>丰富抽奖</strong>已成功举办。</> },
+  ],
 };
 
 const HEADING: Record<string, React.ReactNode> = {
   ko: <>KVUM의 <span className="grad">프로그램.</span></>,
   en: <>KVUM&apos;s <span className="grad">core programs</span></>,
   ja: <>KVUM の <span className="grad">プログラム。</span></>,
+  zh: <>KVUM 的 <span className="grad">活动内容。</span></>,
 };
 
 const LEAD: Record<string, string> = {
   ko: '네 가지 축으로 구성된 KVUM의 핵심 프로그램.\n체험부터 네트워킹까지 온전히 즐길 수 있는 하루.',
   en: 'Four pillars that make KVUM — a full day to enjoy from hands-on to networking.',
   ja: '4つの柱で構成された KVUM のコアプログラム。\n体験からネットワーキングまで満喫できる一日。',
+  zh: '由四大支柱构成的 KVUM 核心活动。\n从体验到社交，尽情享受的一天。',
 };
 
 export function CTASection() {

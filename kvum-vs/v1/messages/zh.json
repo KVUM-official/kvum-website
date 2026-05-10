@@ -1,0 +1,142 @@
+{
+  "Common": {
+    "loading": "加载中...",
+    "error": "发生错误",
+    "backToHome": "返回首页"
+  },
+  "Navigation": {
+    "home": "首页",
+    "about": "关于",
+    "events": "活动",
+    "team": "团队",
+    "partners": "合作伙伴"
+  },
+  "Home": {
+    "tagline": "Korea VR User Meetup",
+    "subtitle": "以用户为主导，围绕 XR 主题进行交流与融合的沟通空间",
+    "cta_primary": "了解第5届活动",
+    "cta_secondary": "查看往届活动",
+    "scroll_hint": "滚动"
+  },
+  "About": {
+    "label": "关于",
+    "title": "KVUM",
+    "tagline": "Korea VR User Meetup",
+    "description": "由韩国 XR 用户主导，进行交流、体验与社交的线下社区。",
+    "stat1_num": "4",
+    "stat1_label": "届活动",
+    "stat2_num": "200+",
+    "stat2_label": "累计参与者",
+    "stat3_num": "20+",
+    "stat3_label": "合作伙伴"
+  },
+  "Value": {
+    "label": "活动介绍",
+    "title": "我们做什么",
+    "item1_title": "社区",
+    "item1_desc": "以韩国 XR 用户为中心的自发线下聚会",
+    "item2_title": "体验",
+    "item2_desc": "亲身体验最新 VR · AR 设备与内容的空间",
+    "item3_title": "社交",
+    "item3_desc": "开发者 · 创作者 · 用户自然交流的场所",
+    "item4_title": "嘉宾分享",
+    "item4_desc": "来自 XR 行业专家与意见领袖的鲜活洞察"
+  },
+  "EventFifth": {
+    "label": "Next Event",
+    "title": "KVUM 5TH",
+    "date": "2026年10月3日",
+    "location": "首尔 · 文来",
+    "target_label": "对象",
+    "target": "XR 用户、开发者、行业人士、内容创作者",
+    "capacity_label": "招募人数",
+    "capacity": "稍后公布",
+    "fees_label": "参加费",
+    "fees": "稍后公布",
+    "registration_label": "报名方式",
+    "registration": "通过社区 · SNS · 群聊公告",
+    "benefits_label": "活动内容",
+    "benefit_01": "XR 设备体验",
+    "benefit_02": "嘉宾邀请分享",
+    "benefit_03": "自由讨论 & 社交",
+    "benefit_04": "抽奖活动",
+    "contact_label": "联系我们",
+    "contact_kakao_title": "KakaoTalk 开放聊天",
+    "contact_kakao_desc": "活动消息 · 实时通知",
+    "contact_email_title": "future1070@naver.com",
+    "contact_email_desc": "合作 · 一般咨询",
+    "contact_x_title": "@vum_k67455",
+    "contact_x_desc": "官方 X (Twitter)",
+    "contact_blog_title": "VR Insight",
+    "contact_blog_desc": "Naver 博客"
+  },
+  "Events": {
+    "label": "往届活动",
+    "title": "EVENTS",
+    "subtitle": "从派对房间到250坪展厅 —— 规模与影响力共同成长的四届聚会，以及未来。",
+    "view_photos": "查看照片",
+    "attendees_label": "参与者",
+    "speakers_label": "嘉宾",
+    "partners_label": "合作伙伴"
+  },
+  "Gallery": {
+    "label": "过往瞬间",
+    "title": "GALLERY",
+    "cta": "查看全部照片"
+  },
+  "Team": {
+    "label": "团队",
+    "title": "TEAM",
+    "member1_bio": "KVUM 主办人兼 VR Insight 博客运营者。致力于打造连接韩国 XR 市场与用户的平台。",
+    "member2_bio": "负责活动策划与现场执行。",
+    "member3_bio": "负责 KVUM 的设计与品牌体验。",
+    "join_label": "Join KVUM",
+    "join_title": "我们在寻找同行的伙伴。",
+    "join_desc": "如果您希望共同发展 XR 社区，或对活动运营感兴趣，欢迎随时联系。",
+    "join_cta": "Contact us"
+  },
+  "Partners": {
+    "label": "合作伙伴",
+    "title": "PARTNERS",
+    "label_sponsors": "赞助商",
+    "label_community": "社区伙伴"
+  },
+  "CTA": {
+    "label": "Next Event",
+    "title": "KVUM 5TH",
+    "date": "2026 · 10 · 03",
+    "subtitle": "韩国 XR 社区的第五次聚会，您的座位正在等待。",
+    "cta_primary": "查看活动",
+    "cta_secondary": "查看活动"
+  },
+  "Footer": {
+    "rights": "2025. KVUM all rights reserved.",
+    "representative": "KVUM | VR Insight · 主办 金正贤",
+    "email_label": "邮箱",
+    "openchat_label": "Kakao 开放聊天"
+  },
+  "Page5th": {
+    "hero_label": "5th KVUM · Coming Soon",
+    "hero_title": "再次回归，第五届 KVUM。",
+    "hero_sub": "2026年10月3日，韩国的 XR 用户 · 开发者 · 企业再次相聚一堂。",
+    "overview_note": "* 所有日程与详细内容可能会有变动，最终确认内容将在报名开始前公布。",
+    "expect_label": "What to Expect",
+    "tuned_badge": "STAY TUNED"
+  },
+  "PageTeam": {
+    "hero_label": "KVUM Team",
+    "hero_title": "打造 KVUM 的人们。",
+    "hero_sub": "致力于让韩国 XR 用户成为主体，活跃地进行交流与信息分享的平台团队。",
+    "staff_title": "Staff",
+    "staff_desc": "除运营团队外，KVUM 也由现场协助的工作人员共同打造。",
+    "cta_label": "Join KVUM",
+    "cta_title": "我们在寻找同行的伙伴。",
+    "cta_desc": "如果您希望共同发展 XR 社区，或对活动运营感兴趣，欢迎随时联系。"
+  },
+  "PageGallery": {
+    "hero_label": "Gallery",
+    "hero_title": "KVUM 现场的瞬间。",
+    "hero_sub": "从第1届到第4届 —— 从派对房间到250坪展厅，KVUM 记录的 XR 社区轨迹。",
+    "footnote": "* 第1/2/3届的部分照片仍在上传中，更多照片将陆续公开。"
+  }
+}

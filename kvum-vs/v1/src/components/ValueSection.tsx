@@ -44,6 +44,15 @@ const TITLES: Record<string, { heading: React.ReactNode; items: Array<{ title: s
       { title: '韓国 XR エコシステムの拡大', desc: 'グローバル XR 市場が急成長する今、韓国の XR ユーザー・開発者・企業が一堂に集い、健全な成長に貢献できる場を創ります。' },
     ],
   },
+  zh: {
+    heading: <>驱动 KVUM 的<br /><span className="grad">四个核心价值。</span></>,
+    items: [
+      { title: '通过体验理解技术', desc: 'XR 技术仅凭文字或视频难以完全理解。KVUM 提供亲身体验各类设备与内容、并分享经验的空间。' },
+      { title: '用户与从业者的交流', desc: 'KVUM 不仅是 XR 设备用户的聚会。内容与硬件开发者、业界人士也共同分享最新趋势与实际反馈。' },
+      { title: '构建 XR 社区文化', desc: '不仅是设备展览，更是以用户为主导的社区型活动。彼此尊重设备与想法、分享经验，共同构建社区文化。' },
+      { title: '扩大韩国 XR 生态', desc: '在全球 XR 市场快速增长的当下，韩国 XR 用户 · 开发者 · 企业齐聚一堂，共同推动健康成长。' },
+    ],
+  },
 };
 
 export function ValueSection() {

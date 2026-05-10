@@ -185,6 +185,52 @@ const CONTENT: Record<string, Content> = {
     ],
     footnote: '* 1/2/3回の写真は一部のみアップロードされています。追加写真は順次公開予定です。',
   },
+  zh: {
+    heroLabel: 'Gallery',
+    heroTitle: <>KVUM 现场的<br /><span className="grad">瞬间。</span></>,
+    heroSub: '从第1届到第4届 —— 从派对房间到大型展厅，KVUM 记录的 XR 社区轨迹。',
+    tabs: [
+      { id: 'g-4th', num: '04', label: '4th · 2025.10', active: true },
+      { id: 'g-3rd', num: '03', label: '3rd · 2025.03' },
+      { id: 'g-2nd', num: '02', label: '2nd · 2024.06' },
+      { id: 'g-1st', num: '01', label: '1st · 2024.03' },
+      { id: 'g-values', num: '★', label: 'Values' },
+    ],
+    blocks: {
+      fourth: {
+        id: 'g-4th', num: '04', date: '2025 · 10 · 03', place: '首尔 · 文来',
+        title: <>首届 XR 节日，<span className="grad">座无虚席。</span></>,
+        desc: '史上最大规模的聚会，众多合作伙伴与嘉宾共同参与。',
+      },
+      third: {
+        id: 'g-3rd', num: '03', date: '2025 · 03',
+        title: <>稳居 <span className="grad">韩国最大规模。</span></>,
+        desc: '成长为韩国最大 XR 用户主导线下活动的一届。',
+      },
+      second: {
+        id: 'g-2nd', num: '02', date: '2024 · 06',
+        title: <>参与 <span className="grad">正式扩展。</span></>,
+        desc: '企业与机构参与扩大的第2届聚会。',
+      },
+      first: {
+        id: 'g-1st', num: '01', date: '2024 · 03',
+        title: <>一切的 <span className="grad">开始。</span></>,
+        desc: '在首尔舍堂的小派对房间举办的首届 VR 用户聚会。',
+      },
+      values: {
+        id: 'g-values', num: '★', date: 'KVUM 的场景',
+        title: <>KVUM 描绘的 <span className="grad">四个场景。</span></>,
+        desc: '体验 · 交流 · 社区 · 生态 —— KVUM 创造的瞬间。',
+      },
+    },
+    quad: [
+      { src: '/images/photos/value-experience.jpg', alt: '体验', caption: 'Experience' },
+      { src: '/images/photos/value-exchange.png',   alt: '交流', caption: 'Exchange' },
+      { src: '/images/photos/value-community.jpg',  alt: '社区', caption: 'Community' },
+      { src: '/images/photos/value-ecosystem.jpg',  alt: '生态', caption: 'Ecosystem' },
+    ],
+    footnote: '* 第1/2/3届的部分照片仍在上传中，更多照片将陆续公开。',
+  },
 };
 
 export function Gallery() {
