@@ -13,11 +13,17 @@ export function CustomCursor() {
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
-    if (window.matchMedia('(hover: none)').matches) return;
+    if (window.matchMedia('(hover: none), (pointer: coarse)').matches) return;
 
     const cluster = clusterRef.current;
     const ring = ringRef.current;
     if (!cluster || !ring) return;
+
+    const onTouch = () => {
+      cluster.style.display = 'none';
+      ring.style.display = 'none';
+    };
+    window.addEventListener('touchstart', onTouch, { once: true, passive: true });
 
     let mx = window.innerWidth / 2;
     let my = window.innerHeight / 2;
@@ -73,6 +79,7 @@ export function CustomCursor() {
     return () => {
       cancelAnimationFrame(raf);
       window.removeEventListener('mousemove', onMove);
+      window.removeEventListener('touchstart', onTouch);
       document.removeEventListener('mouseleave', onLeave);
       document.removeEventListener('mouseover', onOver);
       document.removeEventListener('mouseout', onOut);

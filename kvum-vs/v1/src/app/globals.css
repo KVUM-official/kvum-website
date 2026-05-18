@@ -512,7 +512,16 @@ ul  { list-style: none; }
 .ticker__track {
   display: flex;
   width: max-content;
+  will-change: transform;
+  transform: translateZ(0);
   animation: tickerScroll 90s linear infinite;
+  animation-play-state: paused;
+  opacity: 0;
+  transition: opacity .4s ease;
+}
+.ticker--logos.is-ready .ticker__track {
+  animation-play-state: running;
+  opacity: 1;
 }
 .ticker__group {
   display: flex; gap: 52px; align-items: center;
@@ -1798,8 +1807,8 @@ ul  { list-style: none; }
   mix-blend-mode: normal;
 }
 
-@media (hover: none) {
-  .cursor-cluster, .cursor-ring { display: none; }
+@media (hover: none), (pointer: coarse) {
+  .cursor-cluster, .cursor-ring { display: none !important; }
 }
 
 /* ============ SCROLL REVEAL ============ */
