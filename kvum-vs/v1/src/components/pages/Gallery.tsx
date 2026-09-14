@@ -21,7 +21,9 @@ type Content = {
   blocks: { fourth: Block; third: Block; second: Block; first: Block };
 };
 
-const FOURTH_PHOTOS: Array<{ n: string; mod?: 'tall' | 'wide'; ext?: 'jpg' | 'png' }> = [
+type GalleryPhoto = { n: string; mod?: 'tall' | 'wide'; ext?: 'jpg' | 'png' };
+
+const FOURTH_PHOTOS: GalleryPhoto[] = [
   { n: '01', mod: 'tall' },
   { n: '02' },
   { n: '03' },
@@ -44,6 +46,54 @@ const FOURTH_PHOTOS: Array<{ n: string; mod?: 'tall' | 'wide'; ext?: 'jpg' | 'pn
   { n: '20' },
   { n: '21', ext: 'png' },
 ];
+
+const THIRD_PHOTOS: GalleryPhoto[] = [
+  { n: '1' },
+  { n: '2' },
+  { n: '3' },
+  { n: '4' },
+  { n: '5' },
+  { n: '6' },
+  { n: '7' },
+  { n: '8' },
+  { n: '9' },
+];
+
+const SECOND_PHOTOS: GalleryPhoto[] = [
+  { n: '1' },
+  { n: '2' },
+  { n: '3' },
+  { n: '4' },
+  { n: '5' },
+  { n: '6' },
+  { n: '7' },
+  { n: '8' },
+];
+
+const FIRST_PHOTOS: GalleryPhoto[] = [
+  { n: '1' },
+  { n: '2' },
+  { n: '3' },
+  { n: '4' },
+  { n: '5' },
+  { n: '6' },
+  { n: '7' },
+  { n: '8' },
+];
+
+const PHOTOS_BY_TAB: Record<string, { folder: string; prefix: string; label: string; photos: GalleryPhoto[] }> = {
+  'g-4th': { folder: '4th', prefix: 'photo-', label: '4th', photos: FOURTH_PHOTOS },
+  'g-3rd': { folder: '3rd', prefix: '3rd_', label: '3rd', photos: THIRD_PHOTOS },
+  'g-2nd': { folder: '2nd', prefix: '2nd_', label: '2nd', photos: SECOND_PHOTOS },
+  'g-1st': { folder: '1st', prefix: '1st_', label: '1st', photos: FIRST_PHOTOS },
+};
+
+const BLOCK_KEY_BY_TAB: Record<string, keyof Content['blocks']> = {
+  'g-4th': 'fourth',
+  'g-3rd': 'third',
+  'g-2nd': 'second',
+  'g-1st': 'first',
+};
 
 const CONTENT: Record<string, Content> = {
   ko: {
@@ -180,20 +230,14 @@ const CONTENT: Record<string, Content> = {
   },
 };
 
-const SINGLE_IMG: Record<string, { src: string; alt: string }> = {
-  'g-3rd': { src: '/images/photos/history-3rd.jpg', alt: '3rd KVUM' },
-  'g-2nd': { src: '/images/photos/history-2nd.jpg', alt: '2nd KVUM' },
-  'g-1st': { src: '/images/photos/history-1st.jpg', alt: '1st KVUM' },
-};
-
 export function Gallery() {
   const locale = useLocale();
   const c = CONTENT[locale] ?? CONTENT.ko;
   const b = c.blocks;
   const [active, setActive] = useState('g-4th');
 
-  const singleBlock =
-    active === 'g-3rd' ? b.third : active === 'g-2nd' ? b.second : active === 'g-1st' ? b.first : null;
+  const activeBlock = b[BLOCK_KEY_BY_TAB[active]];
+  const activeTabPhotos = PHOTOS_BY_TAB[active];
 
   return (
     <>
@@ -228,64 +272,36 @@ export function Gallery() {
             ))}
           </nav>
 
-          {active === 'g-4th' && (
-            <article className="gallery__block" id={b.fourth.id}>
-              <header className="gallery__block-head">
-                <div className="gallery__block-meta">
-                  <span className="gallery__block-num">{b.fourth.num}</span>
-                  <span className="gallery__block-date">{b.fourth.date}</span>
-                  {b.fourth.place && <span className="gallery__block-place">{b.fourth.place}</span>}
-                </div>
-                <h2 className="gallery__block-title">{b.fourth.title}</h2>
-                <p className="gallery__block-desc">{b.fourth.desc}</p>
-              </header>
-
-              <div className="masonry">
-                {FOURTH_PHOTOS.map(p => (
-                  <figure
-                    key={p.n}
-                    className={`masonry__item${p.mod ? ` masonry__item--${p.mod}` : ''}`}
-                  >
-                    <Image
-                      src={`/images/gallery/4th/photo-${p.n}.${p.ext ?? 'jpg'}`}
-                      alt={`4th KVUM photo ${p.n}`}
-                      width={800}
-                      height={600}
-                      sizes="(max-width: 760px) 50vw, (max-width: 1024px) 33vw, 25vw"
-                      loading="lazy"
-                      style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-                    />
-                  </figure>
-                ))}
+          <article className="gallery__block" id={activeBlock.id}>
+            <header className="gallery__block-head">
+              <div className="gallery__block-meta">
+                <span className="gallery__block-num">{activeBlock.num}</span>
+                <span className="gallery__block-date">{activeBlock.date}</span>
+                {activeBlock.place && <span className="gallery__block-place">{activeBlock.place}</span>}
               </div>
-            </article>
-          )}
+              <h2 className="gallery__block-title">{activeBlock.title}</h2>
+              <p className="gallery__block-desc">{activeBlock.desc}</p>
+            </header>
 
-          {singleBlock && (
-            <article className="gallery__block" id={singleBlock.id}>
-              <header className="gallery__block-head">
-                <div className="gallery__block-meta">
-                  <span className="gallery__block-num">{singleBlock.num}</span>
-                  <span className="gallery__block-date">{singleBlock.date}</span>
-                </div>
-                <h2 className="gallery__block-title">{singleBlock.title}</h2>
-                <p className="gallery__block-desc">{singleBlock.desc}</p>
-              </header>
-              <div className="gallery__single">
-                <figure className="gallery__hero-img">
+            <div className="masonry">
+              {activeTabPhotos.photos.map(p => (
+                <figure
+                  key={p.n}
+                  className={`masonry__item${p.mod ? ` masonry__item--${p.mod}` : ''}`}
+                >
                   <Image
-                    src={SINGLE_IMG[active].src}
-                    alt={SINGLE_IMG[active].alt}
-                    width={1600}
-                    height={900}
-                    sizes="(max-width: 1100px) 100vw, 1100px"
+                    src={`/images/gallery/${activeTabPhotos.folder}/${activeTabPhotos.prefix}${p.n}.${p.ext ?? 'jpg'}`}
+                    alt={`${activeTabPhotos.label} KVUM photo ${p.n}`}
+                    width={800}
+                    height={600}
+                    sizes="(max-width: 760px) 50vw, (max-width: 1024px) 33vw, 25vw"
                     loading="lazy"
                     style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                   />
                 </figure>
-              </div>
-            </article>
-          )}
+              ))}
+            </div>
+          </article>
 
         </div>
       </section>

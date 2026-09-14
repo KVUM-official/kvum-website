@@ -8,7 +8,7 @@ type Partner = { id: number; name: string };
 type PartnersByGeneration = Record<string, Partner[]>;
 
 // 새 기수가 열리면 이 배열 끝에 추가하면 탭이 자동으로 늘어난다. (예: [..., '5th'])
-const GENERATIONS = ['1st', '2nd', '3rd', '4th'] as const;
+const GENERATIONS = ['1st', '2nd', '3rd', '4th', '5th'] as const;
 const DEFAULT_GENERATION = GENERATIONS[GENERATIONS.length - 1];
 
 const ASSET_VERSION = process.env.NEXT_PUBLIC_ASSET_VERSION ?? '';
