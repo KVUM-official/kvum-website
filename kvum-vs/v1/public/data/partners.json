@@ -59,11 +59,13 @@
     { "id": "5th_12", "name": "Partner 11" },
     { "id": "5th_13", "name": "Partner 12" },
     { "id": "5th_14", "name": "Partner 13" },
-    { "id": "5th_15", "name": "Partner 14" },
-    { "id": "5th_16", "name": "Partner 15" },
-    { "id": "5th_17", "name": "Partner 16" },
-    { "id": "5th_18", "name": "Partner 17" },
-    { "id": "5th_19", "name": "Partner 18" },
-    { "id": "5th_20", "name": "Partner 19" }
+    { "id": "5th_15", "name": "Partner 20" },
+    { "id": "5th_16", "name": "Partner 14" },
+    { "id": "5th_17", "name": "Partner 15" },
+    { "id": "5th_18", "name": "Partner 16" },
+    { "id": "5th_19", "name": "Partner 17" },
+    { "id": "5th_20", "name": "Partner 18" },
+    { "id": "5th_21", "name": "Partner 19" },
+    { "id": "5th_22", "name": "Partner 21" }
   ]
 }
