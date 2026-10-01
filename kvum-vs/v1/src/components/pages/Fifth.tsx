@@ -23,6 +23,17 @@ type Content = {
   tunedDesc: string;
   contactLabels: { kakao: string; kakaoSub: string; discord: string; discordSub: string; email: string; emailSub: string; x: string; xSub: string; blog: string; blogSub: string };
   deadlineNotice: React.ReactNode;
+  guideLabel: string;
+  guideHeading: React.ReactNode;
+  guideBanner: string;
+  guideCards: Array<{ num: string; title: string; body: string[] }>;
+  scheduleTimeHeader: string;
+  scheduleProgramHeader: string;
+  scheduleRows: Array<{ time: string; desc: string }>;
+  scheduleCaption: string;
+  cautionTitle: string;
+  cautionDesc: string;
+  inquiryText: string;
 };
 
 const VENUE_MAP_URL = 'https://naver.me/xY4sP1mO';
@@ -98,6 +109,65 @@ const CONTENT: Record<string, Content> = {
       blog: 'VR 인사이트', blogSub: '네이버 블로그',
     },
     deadlineNotice: <>제 5회 KVUM 참가 신청 마감: <strong>10월 1일(목) 자정</strong></>,
+    guideLabel: 'Visit Guide',
+    guideHeading: <>방문 전 <span className="grad">꼭 확인해 주세요.</span></>,
+    guideBanner: '10:30 입장 확인 · 11:00 본 행사 시작',
+    guideCards: [
+      { num: '01', title: '입장 시간과 장소', body: [
+        '서울 영등포구 문래로 55, 2층',
+        '일찍 도착하시면 로비에서 잠시 대기하실 수 있어요.',
+        '본 행사 11:00~17:00',
+        '행사 중 자유롭게 입퇴장 가능합니다.',
+        '주차는 인근 공영주차장을 이용해 주세요.',
+      ] },
+      { num: '02', title: '입장 확인과 명찰', body: [
+        '입금자 이름과 전화번호를 확인한 뒤 명찰을 드립니다. 사용할 닉네임을 명찰에 자유롭게 적어 주세요.',
+        '행사장 안에서는 명찰이 항상 보이도록 착용해 주세요.',
+      ] },
+      { num: '03', title: '참가 신청과 굿즈', body: [
+        '참가 신청은 10월 1일 자정 마감입니다.',
+        '현장 참가는 제한됩니다.',
+        '굿즈는 입장 확인을 마친 참가자 선착순 200명에게 제공됩니다.',
+      ] },
+      { num: '04', title: '음식과 음료는 로비에서', body: [
+        '다과와 음료는 로비에서 제공됩니다.',
+        '음식·음료 취식은 로비에서만 부탁드립니다.',
+        '전자기기 보호와 안전을 위한 안내입니다.',
+        '다과는 선착순으로 제공됩니다.',
+      ] },
+      { num: '05', title: '장비 지참과 체험', body: [
+        '장비 없이도 참여할 수 있어요.',
+        '개인 장비 지참은 자유입니다.',
+        '사용할 책상도 준비됩니다.',
+        '다른 사람의 장비는 반드시 소유자의 허락을 받고 사용해 주세요.',
+        '개인 장비와 소지품은 잘 챙겨 주세요.',
+      ] },
+      { num: '06', title: '촬영과 SNS 공유', body: [
+        '다른 참가자의 얼굴이 나온 사진은 얼굴을 가리고 공유해 주세요.',
+        '이름표나 화면에 개인 정보가 있는지 게시 전에 한 번 더 확인해 주세요.',
+      ] },
+      { num: '07', title: '애프터파티', body: [
+        '18:00~21:00 · 본 행사와 같은 장소',
+        '별도로 신청한 본 행사 참가자만 참여 가능합니다.',
+        '미성년자는 참여할 수 없습니다.',
+        '현재 신청 마감 · 추가 참가 문의는 운영진에게',
+      ] },
+    ],
+    scheduleTimeHeader: '시간',
+    scheduleProgramHeader: '프로그램',
+    scheduleRows: [
+      { time: '10:30', desc: '입장 확인 시작' },
+      { time: '11:00~12:00', desc: '행사 시작 · 연사 발표' },
+      { time: '12:00~16:30', desc: '자유 교류 · 기기 체험 · 콘텐츠 플레이' },
+      { time: '16:30~17:00', desc: '경품 행사' },
+      { time: '17:00~17:30', desc: '본 행사 정리 · 기념사진 촬영' },
+      { time: '17:30~18:00', desc: '애프터파티 준비' },
+      { time: '18:00~21:00', desc: '애프터파티 · 식사 및 자유 교류' },
+    ],
+    scheduleCaption: '현장 진행에 따라 순서와 시간이 변경될 수 있습니다.',
+    cautionTitle: '쾌적한 행사 운영을 위한 안내',
+    cautionDesc: '타인에게 불쾌감을 주는 행위를 하거나 스태프의 지시에 따르지 않을 경우, 퇴장 조치될 수 있습니다.',
+    inquiryText: '문의나 도움이 필요하면 현장 스태프에게 말씀해 주세요.',
   },
   en: {
     heroLabel: '5th KVUM · Coming Soon',
@@ -134,6 +204,65 @@ const CONTENT: Record<string, Content> = {
       blog: 'VR Insight', blogSub: 'Naver Blog',
     },
     deadlineNotice: <>5th KVUM registration closes: <strong>midnight, Thu Oct 1</strong></>,
+    guideLabel: 'Visit Guide',
+    guideHeading: <>What to check <span className="grad">before you visit.</span></>,
+    guideBanner: '10:30 Check-in opens · 11:00 Program begins',
+    guideCards: [
+      { num: '01', title: 'Entry Time & Venue', body: [
+        '55 Munnae-ro, Yeongdeungpo-gu, Seoul, 2F',
+        "If you arrive early, you're welcome to wait in the lobby.",
+        'Main program runs 11:00–17:00.',
+        'Feel free to come and go during the event.',
+        'Please use the nearby public parking lot.',
+      ] },
+      { num: '02', title: 'Check-in & Name Badge', body: [
+        "We'll verify the name and phone number used for payment, then hand you a badge — feel free to write the nickname you'd like to use on it.",
+        'Please keep your badge visible at all times inside the venue.',
+      ] },
+      { num: '03', title: 'Registration & Goods', body: [
+        'Registration closes at midnight on October 1.',
+        'On-site registration will be limited.',
+        'Goods will be given to the first 200 checked-in attendees.',
+      ] },
+      { num: '04', title: 'Food & Drinks in the Lobby', body: [
+        'Snacks and drinks are provided in the lobby.',
+        'Please eat and drink only in the lobby.',
+        'This is to protect electronic equipment and keep everyone safe.',
+        'Snacks are offered on a first-come, first-served basis.',
+      ] },
+      { num: '05', title: 'Bringing Gear & Trying It Out', body: [
+        "You're welcome to join even without your own gear.",
+        'Bringing personal devices is entirely optional.',
+        'Desks will be available for use.',
+        "Please always get the owner's permission before using someone else's gear.",
+        'Please keep an eye on your personal belongings.',
+      ] },
+      { num: '06', title: 'Photos & Social Sharing', body: [
+        "If a photo shows another attendee's face, please blur it before sharing.",
+        'Double-check for personal info on name tags or screens before posting.',
+      ] },
+      { num: '07', title: 'After Party', body: [
+        '18:00–21:00 · Same venue as the main program',
+        'Open only to main-program attendees who registered separately.',
+        'Minors cannot attend.',
+        'Registration is currently closed — for additional spots, please contact the organizers.',
+      ] },
+    ],
+    scheduleTimeHeader: 'Time',
+    scheduleProgramHeader: 'Program',
+    scheduleRows: [
+      { time: '10:30', desc: 'Check-in opens' },
+      { time: '11:00–12:00', desc: 'Program begins · Speaker talks' },
+      { time: '12:00–16:30', desc: 'Open networking · device demos · content play' },
+      { time: '16:30–17:00', desc: 'Prize events' },
+      { time: '17:00–17:30', desc: 'Wrap-up · group photo' },
+      { time: '17:30–18:00', desc: 'After-party setup' },
+      { time: '18:00–21:00', desc: 'After party · dinner & open networking' },
+    ],
+    scheduleCaption: 'Order and timing may change depending on how the day unfolds.',
+    cautionTitle: 'A note for a smooth event',
+    cautionDesc: 'Anyone causing discomfort to other attendees or not following staff instructions may be asked to leave.',
+    inquiryText: 'If you need help or have questions, please speak to our on-site staff.',
   },
   ja: {
     heroLabel: '5th KVUM · Coming Soon',
@@ -170,6 +299,65 @@ const CONTENT: Record<string, Content> = {
       blog: 'VR インサイト', blogSub: 'ネイバーブログ',
     },
     deadlineNotice: <>第5回 KVUM 参加申込締切：<strong>10月1日(木)24時</strong></>,
+    guideLabel: 'Visit Guide',
+    guideHeading: <>来場前に<span className="grad">必ずご確認ください。</span></>,
+    guideBanner: '10:30 受付開始 · 11:00 本編スタート',
+    guideCards: [
+      { num: '01', title: '入場時間と場所', body: [
+        'ソウル市永登浦区文来路55、2階',
+        '早めに到着された場合は、ロビーで少しお待ちいただけます。',
+        '本編は11:00〜17:00です。',
+        'イベント中は自由に入退場いただけます。',
+        '駐車は近隣の公共駐車場をご利用ください。',
+      ] },
+      { num: '02', title: '受付と名札', body: [
+        'お振込みのお名前とお電話番号を確認した後、名札をお渡しします。使用されるニックネームを名札にご自由にご記入ください。',
+        '会場内では名札が常に見えるように着用してください。',
+      ] },
+      { num: '03', title: '参加申込とグッズ', body: [
+        '参加申込は10月1日24時に締め切ります。',
+        '当日参加は制限されます。',
+        'グッズは受付を済ませた先着200名様にお渡しします。',
+      ] },
+      { num: '04', title: '飲食はロビーで', body: [
+        'お茶菓子とお飲み物はロビーでご提供します。',
+        '飲食はロビーでのみお願いいたします。',
+        '電子機器の保護と安全のためのご案内です。',
+        'お茶菓子は先着順でご提供します。',
+      ] },
+      { num: '05', title: '機材の持参と体験', body: [
+        '機材をお持ちでなくてもご参加いただけます。',
+        '個人機材の持参は自由です。',
+        '使用できる机もご用意しています。',
+        '他の方の機材は必ず所有者の許可を得てからご使用ください。',
+        '個人の機材・持ち物は各自でしっかり管理してください。',
+      ] },
+      { num: '06', title: '撮影とSNS共有', body: [
+        '他の参加者の顔が写った写真は、顔を隠してから共有してください。',
+        '名札や画面に個人情報が写っていないか、投稿前にもう一度ご確認ください。',
+      ] },
+      { num: '07', title: 'アフターパーティー', body: [
+        '18:00〜21:00 · 本編と同じ会場',
+        '別途申込をした本編参加者のみご参加いただけます。',
+        '未成年の方はご参加いただけません。',
+        '現在申込締切 · 追加参加に関するお問い合わせは運営までお願いします。',
+      ] },
+    ],
+    scheduleTimeHeader: '時間',
+    scheduleProgramHeader: 'プログラム',
+    scheduleRows: [
+      { time: '10:30', desc: '受付開始' },
+      { time: '11:00〜12:00', desc: '本編スタート · 登壇者発表' },
+      { time: '12:00〜16:30', desc: '自由交流 · 機材体験 · コンテンツプレイ' },
+      { time: '16:30〜17:00', desc: 'プレゼント抽選' },
+      { time: '17:00〜17:30', desc: '本編終了 · 記念撮影' },
+      { time: '17:30〜18:00', desc: 'アフターパーティー準備' },
+      { time: '18:00〜21:00', desc: 'アフターパーティー · 食事 & 自由交流' },
+    ],
+    scheduleCaption: '当日の進行により順序や時間が変更される場合があります。',
+    cautionTitle: '快適な運営のためのお願い',
+    cautionDesc: '他の参加者に不快感を与える行為、またはスタッフの指示に従わない場合、退場をお願いすることがあります。',
+    inquiryText: 'ご不明な点やお困りのことがございましたら、会場スタッフまでお気軽にお声がけください。',
   },
   zh: {
     heroLabel: '5th KVUM · Coming Soon',
@@ -206,6 +394,65 @@ const CONTENT: Record<string, Content> = {
       blog: 'VR Insight', blogSub: 'Naver 博客',
     },
     deadlineNotice: <>第5届 KVUM 报名截止：<strong>10月1日（周四）24点</strong></>,
+    guideLabel: 'Visit Guide',
+    guideHeading: <>到场前<span className="grad">请务必确认。</span></>,
+    guideBanner: '10:30 开始签到 · 11:00 正式开始',
+    guideCards: [
+      { num: '01', title: '入场时间与地点', body: [
+        '首尔永登浦区文来路55号 2楼',
+        '如提前到达，可在大厅稍作等候。',
+        '正式活动时间为11:00~17:00。',
+        '活动期间可自由进出。',
+        '停车请使用附近的公共停车场。',
+      ] },
+      { num: '02', title: '签到与姓名牌', body: [
+        '核实汇款人姓名与电话号码后将为您发放姓名牌，可在姓名牌上自由填写想使用的昵称。',
+        '在会场内请始终佩戴姓名牌，确保清晰可见。',
+      ] },
+      { num: '03', title: '报名与周边', body: [
+        '报名将于10月1日午夜截止。',
+        '现场报名名额有限。',
+        '周边将提供给完成签到的前200名参加者。',
+      ] },
+      { num: '04', title: '餐饮请在大厅内食用', body: [
+        '茶点与饮品将在大厅提供。',
+        '请仅在大厅内用餐饮水。',
+        '此举是为保护电子设备并确保安全。',
+        '茶点按先到先得原则提供。',
+      ] },
+      { num: '05', title: '设备携带与体验', body: [
+        '即使没有设备也可以参加。',
+        '是否携带个人设备完全自愿。',
+        '现场将提供可使用的桌子。',
+        '使用他人设备前请务必征得对方同意。',
+        '请妥善保管好个人设备与随身物品。',
+      ] },
+      { num: '06', title: '拍照与社交媒体分享', body: [
+        '若照片中出现其他参加者的脸部，分享前请先打码遮挡。',
+        '发布前请再次确认姓名牌或屏幕上是否包含个人信息。',
+      ] },
+      { num: '07', title: '派对（After Party）', body: [
+        '18:00~21:00 · 与正式活动同一地点',
+        '仅限另外报名的正式活动参加者参与。',
+        '未成年人不可参加。',
+        '目前报名已截止 · 如需追加参加请联系主办方。',
+      ] },
+    ],
+    scheduleTimeHeader: '时间',
+    scheduleProgramHeader: '内容',
+    scheduleRows: [
+      { time: '10:30', desc: '开始签到' },
+      { time: '11:00~12:00', desc: '正式开始 · 嘉宾演讲' },
+      { time: '12:00~16:30', desc: '自由交流 · 设备体验 · 内容试玩' },
+      { time: '16:30~17:00', desc: '抽奖活动' },
+      { time: '17:00~17:30', desc: '活动收尾 · 合影留念' },
+      { time: '17:30~18:00', desc: '准备派对' },
+      { time: '18:00~21:00', desc: '派对 · 用餐与自由交流' },
+    ],
+    scheduleCaption: '具体顺序与时间可能根据现场情况有所调整。',
+    cautionTitle: '为了活动顺利进行的提醒',
+    cautionDesc: '如有对他人造成不适的行为，或不遵从工作人员指示，可能会被请出场。',
+    inquiryText: '如需咨询或帮助，请随时联系现场工作人员。',
   },
 };
 
@@ -274,6 +521,62 @@ export function Fifth() {
               <p className="overview__note">{c.overviewNote}</p>
             </div>
           </div>
+        </div>
+      </section>
+
+      <section className="section section--guide">
+        <div className="container">
+          <div className="section__label">
+            <span className="label__dot" />
+            <span className="label__text">{c.guideLabel}</span>
+          </div>
+          <h2 className="section__title">{c.guideHeading}</h2>
+
+          <div className="guide-banner">{c.guideBanner}</div>
+
+          <div className="guide__grid">
+            {c.guideCards.map(card => (
+              <article
+                className={`guide-card${card.num === '07' ? ' guide-card--wide' : ''}`}
+                key={card.num}
+              >
+                <div className="guide-card__num">{card.num}</div>
+                <h3 className="guide-card__title">{card.title}</h3>
+                <div className="guide-card__body">
+                  {card.body.map((line, i) => (
+                    <p key={i}>{line}</p>
+                  ))}
+                </div>
+              </article>
+            ))}
+          </div>
+
+          <div className="guide-table-wrap">
+            <table className="guide-table">
+              <thead>
+                <tr>
+                  <th>{c.scheduleTimeHeader}</th>
+                  <th>{c.scheduleProgramHeader}</th>
+                </tr>
+              </thead>
+              <tbody>
+                {c.scheduleRows.map((row, i) => (
+                  <tr key={i}>
+                    <td>{row.time}</td>
+                    <td>{row.desc}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <p className="guide-table-caption">{c.scheduleCaption}</p>
+
+          <div className="guide-caution">
+            <div className="guide-caution__title">{c.cautionTitle}</div>
+            <p className="guide-caution__desc">{c.cautionDesc}</p>
+          </div>
+
+          <p className="guide-inquiry">{c.inquiryText}</p>
         </div>
       </section>
 
