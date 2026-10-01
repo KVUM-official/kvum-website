@@ -6,10 +6,12 @@ import { EventsSection } from '@/components/EventsSection';
 import { PartnersSection } from '@/components/PartnersSection';
 import { CTASection } from '@/components/CTASection';
 import { SectionNav } from '@/components/SectionNav';
+import { AnnouncementModal } from '@/components/AnnouncementModal';
 
 export default function HomePage() {
   return (
     <>
+      <AnnouncementModal />
       <SectionNav />
       <Hero />
       <LogoTicker />

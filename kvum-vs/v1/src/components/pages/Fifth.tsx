@@ -22,6 +22,7 @@ type Content = {
   tunedTitle: React.ReactNode;
   tunedDesc: string;
   contactLabels: { kakao: string; kakaoSub: string; discord: string; discordSub: string; email: string; emailSub: string; x: string; xSub: string; blog: string; blogSub: string };
+  deadlineNotice: React.ReactNode;
 };
 
 const VENUE_MAP_URL = 'https://naver.me/xY4sP1mO';
@@ -96,6 +97,7 @@ const CONTENT: Record<string, Content> = {
       x: '@vum_k67455', xSub: '공식 X (트위터)',
       blog: 'VR 인사이트', blogSub: '네이버 블로그',
     },
+    deadlineNotice: <>제 5회 KVUM 참가 신청 마감: <strong>10월 1일(목) 자정</strong></>,
   },
   en: {
     heroLabel: '5th KVUM · Coming Soon',
@@ -131,6 +133,7 @@ const CONTENT: Record<string, Content> = {
       x: '@vum_k67455', xSub: 'Official X (Twitter)',
       blog: 'VR Insight', blogSub: 'Naver Blog',
     },
+    deadlineNotice: <>5th KVUM registration closes: <strong>midnight, Thu Oct 1</strong></>,
   },
   ja: {
     heroLabel: '5th KVUM · Coming Soon',
@@ -166,6 +169,7 @@ const CONTENT: Record<string, Content> = {
       x: '@vum_k67455', xSub: '公式 X (Twitter)',
       blog: 'VR インサイト', blogSub: 'ネイバーブログ',
     },
+    deadlineNotice: <>第5回 KVUM 参加申込締切：<strong>10月1日(木)24時</strong></>,
   },
   zh: {
     heroLabel: '5th KVUM · Coming Soon',
@@ -201,6 +205,7 @@ const CONTENT: Record<string, Content> = {
       x: '@vum_k67455', xSub: '官方 X (Twitter)',
       blog: 'VR Insight', blogSub: 'Naver 博客',
     },
+    deadlineNotice: <>第5届 KVUM 报名截止：<strong>10月1日（周四）24点</strong></>,
   },
 };
 
@@ -232,6 +237,10 @@ export function Fifth() {
                 </strong>
               </a>
             </div>
+            <p className="cta-notice">
+              <span className="cta-notice__dot" />
+              <span>{c.deadlineNotice}</span>
+            </p>
           </div>
         </div>
       </header>

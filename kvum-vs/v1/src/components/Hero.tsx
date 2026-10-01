@@ -15,6 +15,7 @@ const HERO_CONTENT: Record<string, {
   applyMain: string;
   applyAfterparty: string;
   guideLink: string;
+  deadlineNotice: React.ReactNode;
 }> = {
   ko: {
     markLabel: '다음 밋업',
@@ -37,6 +38,7 @@ const HERO_CONTENT: Record<string, {
     applyMain: '제 5회 KVUM 참가하기',
     applyAfterparty: '애프터파티 참가하기',
     guideLink: '5th KVUM 안내사항',
+    deadlineNotice: <>제 5회 KVUM 참가 신청 마감: <strong>10월 1일(목) 자정</strong></>,
   },
   en: {
     markLabel: 'Next Meetup',
@@ -59,6 +61,7 @@ const HERO_CONTENT: Record<string, {
     applyMain: 'Join the 5th KVUM',
     applyAfterparty: 'Join the After Party',
     guideLink: '5th KVUM Guide',
+    deadlineNotice: <>5th KVUM registration closes: <strong>midnight, Thu Oct 1</strong></>,
   },
   ja: {
     markLabel: '次回ミートアップ',
@@ -80,6 +83,7 @@ const HERO_CONTENT: Record<string, {
     applyMain: '第5回 KVUM に参加する',
     applyAfterparty: 'アフターパーティーに参加する',
     guideLink: '第5回 KVUM 案内',
+    deadlineNotice: <>第5回 KVUM 参加申込締切：<strong>10月1日(木)24時</strong></>,
   },
   zh: {
     markLabel: '下次聚会',
@@ -101,6 +105,7 @@ const HERO_CONTENT: Record<string, {
     applyMain: '参加第5届 KVUM',
     applyAfterparty: '参加派对',
     guideLink: '第5届 KVUM 须知',
+    deadlineNotice: <>第5届 KVUM 报名截止：<strong>10月1日（周四）24点</strong></>,
   },
 };
 
@@ -180,6 +185,10 @@ export function Hero() {
             </svg>
           </a>
         </div>
+        <p className="cta-notice">
+          <span className="cta-notice__dot" />
+          <span>{content.deadlineNotice}</span>
+        </p>
       </div>
 
       <a
