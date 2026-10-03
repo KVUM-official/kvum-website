@@ -4,9 +4,7 @@ import { useLocale } from 'next-intl';
 import Image from 'next/image';
 import { Link } from '@/i18n/navigation';
 
-const MAIN_FORM_URL = 'https://docs.google.com/forms/d/1FpqCY0crwd9q4_rpX0NcKX03ma3Dzyh92GFjI8Ff2Tg/viewform?pli=1&pli=1&edit_requested=true';
-const AFTERPARTY_FORM_URL = 'https://docs.google.com/forms/d/1aM0iDMtavbHQ72RN-5nFOGCKgfguN7t9lfXQp8uylJk/viewform?pli=1&pli=1&edit_requested=true';
-const GUIDE_NOTION_URL = 'https://onyx-digestion-95b.notion.site/KVUM-5th-39cf977d8b4880ba9df8e8fc043d2471';
+const SURVEY_URL = 'https://forms.gle/sv8VVm2G9os5uNUf9';
 const DISCORD_URL = 'https://discord.gg/qm7uXSjBJZ';
 
 type HistoryCard = {
@@ -87,65 +85,55 @@ const JOIN_CONTENT: Record<string, {
   locationLabel: string;
   locationValue: string;
   cta: string;
-  applyMain: string;
-  applyAfterparty: string;
-  guideLink: string;
+  surveyCta: string;
   contactTitle: string;
 }> = {
   ko: {
     heading: <><span className="grad">KVUM</span>이 걸어온 길.</>,
-    badge: 'NOW REGISTERING',
+    badge: '5TH KVUM · 성료',
     title: '제 5회 KVUM',
     dateLabel: 'DATE',
     dateValue: '2026.10.03',
     locationLabel: 'LOCATION',
     locationValue: '서울 문래',
     cta: '상세페이지 바로가기',
-    applyMain: '제 5회 KVUM 참가하기',
-    applyAfterparty: '애프터파티 참가하기',
-    guideLink: '5th KVUM 안내사항',
+    surveyCta: '만족도 조사 참여하기',
     contactTitle: 'Get in touch',
   },
   en: {
     heading: <><span className="grad">KVUM&apos;s</span> journey</>,
-    badge: 'NOW REGISTERING',
+    badge: '5TH KVUM · WRAPPED',
     title: '5th KVUM',
     dateLabel: 'DATE',
     dateValue: '2026.10.03',
     locationLabel: 'LOCATION',
     locationValue: 'Seoul Mullae',
     cta: 'View details',
-    applyMain: 'Join the 5th KVUM',
-    applyAfterparty: 'Join the After Party',
-    guideLink: '5th KVUM Guide',
+    surveyCta: 'Take the Survey',
     contactTitle: 'Get in touch',
   },
   ja: {
     heading: <><span className="grad">KVUM</span> の歩み</>,
-    badge: 'NOW REGISTERING',
+    badge: '5TH KVUM · 開催終了',
     title: '第5回 KVUM',
     dateLabel: 'DATE',
     dateValue: '2026.10.03',
     locationLabel: 'LOCATION',
     locationValue: 'ソウル · 文來',
     cta: '詳細ページへ',
-    applyMain: '第5回 KVUM に参加する',
-    applyAfterparty: 'アフターパーティーに参加する',
-    guideLink: '第5回 KVUM 案内',
+    surveyCta: 'アンケートに参加する',
     contactTitle: 'Get in touch',
   },
   zh: {
     heading: <><span className="grad">KVUM</span> 走过的路。</>,
-    badge: 'NOW REGISTERING',
+    badge: '5TH KVUM · 圆满结束',
     title: '第5届 KVUM',
     dateLabel: 'DATE',
     dateValue: '2026.10.03',
     locationLabel: 'LOCATION',
     locationValue: '首尔 · 文来',
     cta: '查看详情页',
-    applyMain: '参加第5届 KVUM',
-    applyAfterparty: '参加派对',
-    guideLink: '第5届 KVUM 须知',
+    surveyCta: '参与满意度调查',
     contactTitle: 'Get in touch',
   },
 };
@@ -226,14 +214,8 @@ export function EventsSection() {
             </div>
 
             <div className="join__cta-stack">
-              <a href={MAIN_FORM_URL} target="_blank" rel="noopener noreferrer" className="join__cta join__cta--primary">
-                {jc.applyMain}
-                <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
-                  <path d="M9 6l6 6-6 6" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
-              </a>
-              <a href={AFTERPARTY_FORM_URL} target="_blank" rel="noopener noreferrer" className="join__cta join__cta--outline">
-                {jc.applyAfterparty}
+              <a href={SURVEY_URL} target="_blank" rel="noopener noreferrer" className="join__cta join__cta--primary">
+                {jc.surveyCta}
                 <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
                   <path d="M9 6l6 6-6 6" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
@@ -247,13 +229,6 @@ export function EventsSection() {
                   <path d="M9 6l6 6-6 6" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
               </Link>
-              <span className="join__links-divider" aria-hidden="true" />
-              <a href={GUIDE_NOTION_URL} target="_blank" rel="noopener noreferrer" className="join__cta join__cta--text">
-                {jc.guideLink}
-                <svg viewBox="0 0 24 24" width="13" height="13" aria-hidden="true">
-                  <path d="M9 6l6 6-6 6" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
-              </a>
             </div>
           </div>
 
