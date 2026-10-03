@@ -1,127 +1,78 @@
 'use client';
 
-import { useEffect, useState } from 'react';
 import { useLocale } from 'next-intl';
 
-const MAIN_FORM_URL = 'https://docs.google.com/forms/d/1FpqCY0crwd9q4_rpX0NcKX03ma3Dzyh92GFjI8Ff2Tg/viewform?pli=1&pli=1&edit_requested=true';
-const AFTERPARTY_FORM_URL = 'https://docs.google.com/forms/d/1aM0iDMtavbHQ72RN-5nFOGCKgfguN7t9lfXQp8uylJk/viewform?pli=1&pli=1&edit_requested=true';
-const GUIDE_NOTION_URL = 'https://onyx-digestion-95b.notion.site/KVUM-5th-39cf977d8b4880ba9df8e8fc043d2471';
+const SURVEY_URL = 'https://forms.gle/sv8VVm2G9os5uNUf9';
 
 const HERO_CONTENT: Record<string, {
   markLabel: string;
   markLoc: string;
+  endedLabel: string;
   title: React.ReactNode;
-  sub: React.ReactNode;
-  applyMain: string;
-  applyAfterparty: string;
-  guideLink: string;
-  deadlineNotice: React.ReactNode;
+  sub: string;
+  cta: string;
 }> = {
   ko: {
     markLabel: '다음 밋업',
     markLoc: '서울 문래',
+    endedLabel: '성료',
     title: (
       <>
-        <span className="word">체험하고,</span>{' '}
-        <span className="word">소통하고,</span>
+        <span className="word">함께해주셔서,</span>
         <br />
-        <span className="word">함께 만드는</span>{' '}
-        <span className="word grad">XR 무브먼트.</span>
+        <span className="word grad">감사합니다.</span>
       </>
     ),
-    sub: (
-      <>
-        KVUM (크붐)은 국내 XR 유저 · 개발자 · 업계 관계자가 한자리에 모이는{' '}
-        <strong>국내 최대 규모의 XR 유저 밋업</strong>입니다.
-      </>
-    ),
-    applyMain: '제 5회 KVUM 참가하기',
-    applyAfterparty: '애프터파티 참가하기',
-    guideLink: '5th KVUM 안내사항',
-    deadlineNotice: <>제 5회 KVUM 참가 신청 마감: <strong>10월 1일(목) 자정</strong></>,
+    sub: '제 5회 KVUM이 많은 분들과 함께 성황리에 마무리됐습니다. 다음 밋업을 더 좋게 만들 수 있도록, 짧은 후기를 들려주세요.',
+    cta: '만족도 조사 참여하기',
   },
   en: {
     markLabel: 'Next Meetup',
     markLoc: 'Seoul · Mullae',
+    endedLabel: 'Wrapped',
     title: (
       <>
-        <span className="word">Experience,</span>{' '}
-        <span className="word">connect,</span>
+        <span className="word">Together,</span>
         <br />
-        <span className="word">and build the</span>{' '}
-        <span className="word grad">XR movement.</span>
+        <span className="word grad">thank you.</span>
       </>
     ),
-    sub: (
-      <>
-        KVUM is a place where Korea&apos;s XR users, developers, and industry professionals gather in one room —{' '}
-        <strong>the country&apos;s largest XR user meetup</strong>.
-      </>
-    ),
-    applyMain: 'Join the 5th KVUM',
-    applyAfterparty: 'Join the After Party',
-    guideLink: '5th KVUM Guide',
-    deadlineNotice: <>5th KVUM registration closes: <strong>midnight, Thu Oct 1</strong></>,
+    sub: "The 5th KVUM wrapped up with a wonderful crowd. To make the next meetup even better, we'd love to hear your feedback — it only takes a moment.",
+    cta: 'Take the Survey',
   },
   ja: {
     markLabel: '次回ミートアップ',
     markLoc: 'ソウル · 文來',
+    endedLabel: '終了',
     title: (
       <>
-        <span className="word">体験し、</span>
-        <span className="word">つながり、</span>
+        <span className="word">ご参加いただき、</span>
         <br />
-        <span className="word">共に創る</span>{' '}
-        <span className="word grad">XRムーブメント。</span>
+        <span className="word grad">ありがとうございました。</span>
       </>
     ),
-    sub: (
-      <>
-        KVUM は韓国の XR ユーザー、開発者、業界関係者が一つの空間に集う — <strong>国内最大規模の XR ユーザーミートアップ</strong>です。
-      </>
-    ),
-    applyMain: '第5回 KVUM に参加する',
-    applyAfterparty: 'アフターパーティーに参加する',
-    guideLink: '第5回 KVUM 案内',
-    deadlineNotice: <>第5回 KVUM 参加申込締切：<strong>10月1日(木)24時</strong></>,
+    sub: '第5回 KVUM は、多くの皆さまのご参加のもと、盛況のうちに幕を閉じました。次回のミートアップをより良いものにするため、ぜひ短いご感想をお聞かせください。',
+    cta: 'アンケートに参加する',
   },
   zh: {
     markLabel: '下次聚会',
     markLoc: '首尔 · 文来',
+    endedLabel: '圆满结束',
     title: (
       <>
-        <span className="word">体验、</span>
-        <span className="word">连接、</span>
+        <span className="word">与你同行，</span>
         <br />
-        <span className="word">共同打造的</span>{' '}
-        <span className="word grad">XR 运动。</span>
+        <span className="word grad">感谢有你。</span>
       </>
     ),
-    sub: (
-      <>
-        KVUM 是韩国 XR 用户、开发者与业界人士齐聚一堂的 <strong>韩国最大规模 XR 用户聚会</strong>。
-      </>
-    ),
-    applyMain: '参加第5届 KVUM',
-    applyAfterparty: '参加派对',
-    guideLink: '第5届 KVUM 须知',
-    deadlineNotice: <>第5届 KVUM 报名截止：<strong>10月1日（周四）24点</strong></>,
+    sub: '第5届 KVUM 在大家的陪伴下圆满落幕。为了让下一次聚会更精彩，请留下您的简短反馈。',
+    cta: '参与满意度调查',
   },
 };
 
 export function Hero() {
   const locale = useLocale();
   const content = HERO_CONTENT[locale] ?? HERO_CONTENT.ko;
-  const [dday, setDday] = useState('D-—');
-
-  useEffect(() => {
-    const target = new Date('2026-10-03T00:00:00');
-    const day = 1000 * 60 * 60 * 24;
-    const diff = Math.ceil((target.getTime() - new Date(new Date().toDateString()).getTime()) / day);
-    if (diff > 0) setDday(`D-${diff}`);
-    else if (diff === 0) setDday('D-DAY');
-    else setDday(`D+${Math.abs(diff)}`);
-  }, []);
 
   const scrollTo = (id: string) => {
     const el = document.getElementById(id);
@@ -145,7 +96,7 @@ export function Hero() {
           <span>03</span>
         </div>
         <div className="hero__mark-loc">{content.markLoc}</div>
-        <div className="hero__mark-dday">{dday}</div>
+        <div className="hero__mark-dday">{content.endedLabel}</div>
       </aside>
 
       <div className="hero__inner">
@@ -157,38 +108,17 @@ export function Hero() {
         <p className="hero__sub">{content.sub}</p>
         <div className="hero__cta">
           <a
-            href={MAIN_FORM_URL}
+            href={SURVEY_URL}
             target="_blank"
             rel="noopener noreferrer"
             className="btn btn--gradient"
           >
-            <span>{content.applyMain}</span>
+            <span>{content.cta}</span>
             <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
-              <path d="M9 6l6 6-6 6" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
-          </a>
-          <a
-            href={AFTERPARTY_FORM_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn btn--outline"
-          >
-            <span>{content.applyAfterparty}</span>
-            <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
-              <path d="M9 6l6 6-6 6" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
-          </a>
-          <a href={GUIDE_NOTION_URL} target="_blank" rel="noopener noreferrer" className="overview__cta overview__cta--guide overview__cta--pill">
-            <span>{content.guideLink}</span>
-            <svg viewBox="0 0 24 24" width="13" height="13" aria-hidden="true">
               <path d="M9 6l6 6-6 6" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round"/>
             </svg>
           </a>
         </div>
-        <p className="cta-notice">
-          <span className="cta-notice__dot" />
-          <span>{content.deadlineNotice}</span>
-        </p>
       </div>
 
       <a

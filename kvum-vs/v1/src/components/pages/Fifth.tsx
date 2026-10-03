@@ -2,8 +2,6 @@
 
 import { useLocale } from 'next-intl';
 
-const MAIN_FORM_URL = 'https://docs.google.com/forms/d/1FpqCY0crwd9q4_rpX0NcKX03ma3Dzyh92GFjI8Ff2Tg/viewform?pli=1&pli=1&edit_requested=true';
-const AFTERPARTY_FORM_URL = 'https://docs.google.com/forms/d/1aM0iDMtavbHQ72RN-5nFOGCKgfguN7t9lfXQp8uylJk/viewform?pli=1&pli=1&edit_requested=true';
 const GUIDE_NOTION_URL = 'https://onyx-digestion-95b.notion.site/KVUM-5th-39cf977d8b4880ba9df8e8fc043d2471';
 
 type Content = {
@@ -12,8 +10,7 @@ type Content = {
   heroSub: string;
   overviewItems: Array<{ dt: string; dd: React.ReactNode }>;
   overviewNote: string;
-  applyMain: string;
-  applyAfterparty: string;
+  afterEvent: { cta: string; url: string };
   guideLinkLabel: string;
   expectLabel: string;
   expectHeading: React.ReactNode;
@@ -22,7 +19,6 @@ type Content = {
   tunedTitle: React.ReactNode;
   tunedDesc: string;
   contactLabels: { kakao: string; kakaoSub: string; discord: string; discordSub: string; email: string; emailSub: string; x: string; xSub: string; blog: string; blogSub: string };
-  deadlineNotice: React.ReactNode;
   guideLabel: string;
   guideHeading: React.ReactNode;
   guideBanner: string;
@@ -75,20 +71,22 @@ function VenueLine({ venue }: { venue: string }) {
 
 const CONTENT: Record<string, Content> = {
   ko: {
-    heroLabel: '5th KVUM · Coming Soon',
-    heroTitle: <>10월 3일에 만나요,<br /><span className="grad">다섯 번째 KVUM.</span></>,
-    heroSub: '2026년 10월 3일, 국내 XR 유저 · 개발자 · 기업이 다시 한자리에 모입니다. 네 번째 밋업에서 쌓아온 노하우와 네트워크를 바탕으로, 더 넓고 깊은 XR 축제를 준비하고 있습니다.',
+    heroLabel: '5th KVUM · 성료',
+    heroTitle: <>성황리에 마무리됐습니다,<br /><span className="grad">다섯 번째 KVUM.</span></>,
+    heroSub: '많은 분들이 함께해주신 덕분에 제 5회 KVUM이 성공적으로 마무리됐습니다. 다음 밋업을 더 좋게 만들 수 있도록, 짧은 후기를 들려주세요.',
+    afterEvent: {
+      cta: '만족도 조사 참여하기',
+      url: 'https://forms.gle/sv8VVm2G9os5uNUf9',
+    },
     overviewItems: [
       { dt: '일시', dd: '2026년 10월 3일' },
       { dt: '장소', dd: <><VenueLine venue="올댓마인드 (서울 문래)" /><MapLink label="지도 보기" /></> },
       { dt: '대상', dd: 'XR 유저 · 개발자 · 업계 관계자 · 콘텐츠 제작자' },
-      { dt: '모집 인원', dd: '추후 공지' },
-      { dt: '참가 신청', dd: '커뮤니티 · SNS · 단톡방을 통해 공지' },
+      { dt: '모집 인원', dd: '모집 마감' },
+      { dt: '참가 신청', dd: '신청 마감' },
       { dt: '참가비', dd: '10,000원' },
     ],
-    overviewNote: '* 세부 내용은 유동적으로 변경될 수 있습니다.',
-    applyMain: '제 5회 KVUM 참가하기',
-    applyAfterparty: '애프터파티 참가하기',
+    overviewNote: '* 제 5회 KVUM은 성황리에 종료되었습니다.',
     guideLinkLabel: '5th KVUM 안내사항',
     expectLabel: 'What to Expect',
     expectHeading: <>5th KVUM에서 <span className="grad">만날 것들</span></>,
@@ -108,7 +106,6 @@ const CONTENT: Record<string, Content> = {
       x: '@vum_k67455', xSub: '공식 X (트위터)',
       blog: 'VR 인사이트', blogSub: '네이버 블로그',
     },
-    deadlineNotice: <>제 5회 KVUM 참가 신청 마감: <strong>10월 1일(목) 자정</strong></>,
     guideLabel: 'Visit Guide',
     guideHeading: <>방문 전 <span className="grad">꼭 확인해 주세요.</span></>,
     guideBanner: '10:30 입장 확인 · 11:00 본 행사 시작',
@@ -170,20 +167,22 @@ const CONTENT: Record<string, Content> = {
     inquiryText: '문의나 도움이 필요하면 현장 스태프에게 말씀해 주세요.',
   },
   en: {
-    heroLabel: '5th KVUM · Coming Soon',
-    heroTitle: <>See you on Oct 3,<br /><span className="grad">the 5th KVUM.</span></>,
-    heroSub: 'On October 3, 2026, Korea\'s XR users, developers, and companies gather again. Building on the network and expertise from our fourth meetup, we\'re preparing a wider, deeper XR festival.',
+    heroLabel: '5th KVUM · Wrapped',
+    heroTitle: <>That&apos;s a wrap<br /><span className="grad">on the 5th KVUM.</span></>,
+    heroSub: "Thanks to everyone who joined, the 5th KVUM wrapped up with a full house. To make the next meetup even better, we'd love to hear your feedback.",
+    afterEvent: {
+      cta: 'Take the Survey',
+      url: 'https://forms.gle/sv8VVm2G9os5uNUf9',
+    },
     overviewItems: [
       { dt: 'Date', dd: 'October 3, 2026' },
       { dt: 'Venue', dd: <><VenueLine venue="AllThatMind (Seoul Mullae)" /><MapLink label="View map" /></> },
       { dt: 'Audience', dd: 'XR users · developers · industry · content creators' },
-      { dt: 'Capacity', dd: 'TBA' },
-      { dt: 'Registration', dd: 'Via community · SNS · group chats' },
+      { dt: 'Capacity', dd: 'Closed' },
+      { dt: 'Registration', dd: 'Closed' },
       { dt: 'Fee', dd: '₩10,000' },
     ],
-    overviewNote: '* Details are subject to change.',
-    applyMain: 'Join the 5th KVUM',
-    applyAfterparty: 'Join the After Party',
+    overviewNote: '* The 5th KVUM has concluded successfully.',
     guideLinkLabel: '5th KVUM Guide',
     expectLabel: 'What to Expect',
     expectHeading: <>What you&apos;ll find at the <span className="grad">5th KVUM</span></>,
@@ -203,7 +202,6 @@ const CONTENT: Record<string, Content> = {
       x: '@vum_k67455', xSub: 'Official X (Twitter)',
       blog: 'VR Insight', blogSub: 'Naver Blog',
     },
-    deadlineNotice: <>5th KVUM registration closes: <strong>midnight, Thu Oct 1</strong></>,
     guideLabel: 'Visit Guide',
     guideHeading: <>What to check <span className="grad">before you visit.</span></>,
     guideBanner: '10:30 Check-in opens · 11:00 Program begins',
@@ -265,20 +263,22 @@ const CONTENT: Record<string, Content> = {
     inquiryText: 'If you need help or have questions, please speak to our on-site staff.',
   },
   ja: {
-    heroLabel: '5th KVUM · Coming Soon',
-    heroTitle: <>10月3日に会いましょう、<br /><span className="grad">第5回 KVUM。</span></>,
-    heroSub: '2026年10月3日、韓国の XR ユーザー · 開発者 · 企業が再び一堂に集います。第4回ミートアップで培ったノウハウとネットワークを基盤に、より広く深い XR フェスティバルを準備中です。',
+    heroLabel: '5th KVUM · 開催終了',
+    heroTitle: <>盛況のうちに幕を閉じました、<br /><span className="grad">第5回 KVUM。</span></>,
+    heroSub: '多くの皆さまにご参加いただき、第5回 KVUM は盛況のうちに終了しました。次回のミートアップをより良くするため、ぜひ短いご感想をお聞かせください。',
+    afterEvent: {
+      cta: 'アンケートに参加する',
+      url: 'https://forms.gle/sv8VVm2G9os5uNUf9',
+    },
     overviewItems: [
       { dt: '日時', dd: '2026年10月3日' },
       { dt: '会場', dd: <><VenueLine venue="オールザットマインド（ソウル・ムルレ）" /><MapLink label="地図を見る" /></> },
       { dt: '対象', dd: 'XR ユーザー · 開発者 · 業界関係者 · コンテンツクリエイター' },
-      { dt: '定員', dd: '後日公開' },
-      { dt: '参加申込', dd: 'コミュニティ · SNS · グループチャットにて案内' },
+      { dt: '定員', dd: '募集終了' },
+      { dt: '参加申込', dd: '受付終了' },
       { dt: '参加費', dd: '₩10,000' },
     ],
-    overviewNote: '* 詳細は変更される場合があります。',
-    applyMain: '第5回 KVUM に参加する',
-    applyAfterparty: 'アフターパーティーに参加する',
+    overviewNote: '* 第5回 KVUM は盛況のうちに終了しました。',
     guideLinkLabel: '第5回 KVUM 案内',
     expectLabel: 'What to Expect',
     expectHeading: <>第5回 KVUM で <span className="grad">出会えるもの</span></>,
@@ -298,7 +298,6 @@ const CONTENT: Record<string, Content> = {
       x: '@vum_k67455', xSub: '公式 X (Twitter)',
       blog: 'VR インサイト', blogSub: 'ネイバーブログ',
     },
-    deadlineNotice: <>第5回 KVUM 参加申込締切：<strong>10月1日(木)24時</strong></>,
     guideLabel: 'Visit Guide',
     guideHeading: <>来場前に<span className="grad">必ずご確認ください。</span></>,
     guideBanner: '10:30 受付開始 · 11:00 本編スタート',
@@ -360,20 +359,22 @@ const CONTENT: Record<string, Content> = {
     inquiryText: 'ご不明な点やお困りのことがございましたら、会場スタッフまでお気軽にお声がけください。',
   },
   zh: {
-    heroLabel: '5th KVUM · Coming Soon',
-    heroTitle: <>10月3日见，<br /><span className="grad">第5届 KVUM。</span></>,
-    heroSub: '2026年10月3日，韩国 XR 用户 · 开发者 · 企业再次相聚一堂。我们以第4届聚会积累的经验与人脉为基础，正在筹备更广更深的 XR 节日。',
+    heroLabel: '5th KVUM · 圆满结束',
+    heroTitle: <>圆满落幕，<br /><span className="grad">第5届 KVUM。</span></>,
+    heroSub: '感谢大家的参与，第5届 KVUM 圆满结束。为了让下一次聚会更精彩，请留下您的简短反馈。',
+    afterEvent: {
+      cta: '参与满意度调查',
+      url: 'https://forms.gle/sv8VVm2G9os5uNUf9',
+    },
     overviewItems: [
       { dt: '日期', dd: '2026年10月3日' },
       { dt: '地点', dd: <><VenueLine venue="AllThatMind（首尔 · 文来）" /><MapLink label="查看地图" /></> },
       { dt: '对象', dd: 'XR 用户 · 开发者 · 业界人士 · 内容创作者' },
-      { dt: '招募人数', dd: '稍后公布' },
-      { dt: '报名方式', dd: '通过社区 · SNS · 群聊公告' },
+      { dt: '招募人数', dd: '招募结束' },
+      { dt: '报名方式', dd: '报名已截止' },
       { dt: '参加费', dd: '₩10,000' },
     ],
-    overviewNote: '* 详细内容可能会有变动。',
-    applyMain: '参加第5届 KVUM',
-    applyAfterparty: '参加派对',
+    overviewNote: '* 第5届 KVUM 已圆满结束。',
     guideLinkLabel: '第5届 KVUM 须知',
     expectLabel: 'What to Expect',
     expectHeading: <>第5届 KVUM 的 <span className="grad">精彩内容</span></>,
@@ -393,7 +394,6 @@ const CONTENT: Record<string, Content> = {
       x: '@vum_k67455', xSub: '官方 X (Twitter)',
       blog: 'VR Insight', blogSub: 'Naver 博客',
     },
-    deadlineNotice: <>第5届 KVUM 报名截止：<strong>10月1日（周四）24点</strong></>,
     guideLabel: 'Visit Guide',
     guideHeading: <>到场前<span className="grad">请务必确认。</span></>,
     guideBanner: '10:30 开始签到 · 11:00 正式开始',
@@ -472,22 +472,10 @@ export function Fifth() {
             <h1 className="page-hero__title">{c.heroTitle}</h1>
             <p className="page-hero__sub">{c.heroSub}</p>
             <div className="fifth-apply">
-              <a className="fifth-apply__btn fifth-apply__btn--primary" href={MAIN_FORM_URL} target="_blank" rel="noopener noreferrer">
-                <strong>{c.applyMain}</strong>
-              </a>
-              <a className="fifth-apply__btn fifth-apply__btn--outline" href={AFTERPARTY_FORM_URL} target="_blank" rel="noopener noreferrer">
-                <strong>
-                  {c.applyAfterparty}
-                  <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
-                    <path d="M9 6l6 6-6 6" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round"/>
-                  </svg>
-                </strong>
+              <a className="fifth-apply__btn fifth-apply__btn--primary" href={c.afterEvent.url} target="_blank" rel="noopener noreferrer">
+                <strong>{c.afterEvent.cta}</strong>
               </a>
             </div>
-            <p className="cta-notice">
-              <span className="cta-notice__dot" />
-              <span>{c.deadlineNotice}</span>
-            </p>
           </div>
         </div>
       </header>
